@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import MobileMenu from './MobileMenu.vue'
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()
 
 const props = withDefaults(defineProps<{ theme?: string }>(), {
   theme: 'dark',
@@ -93,12 +96,18 @@ function toggleMenu() {
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/cart">
+          <RouterLink to="/cart" class="relative">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-cart.svg' : '/photo/b-logo/b-cart.svg'"
               alt="購物車"
               class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
             />
+            <span
+              v-if="cart.itemCount > 0"
+              class="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
+            >
+              {{ cart.itemCount }}
+            </span>
           </RouterLink>
         </li>
       </ul>

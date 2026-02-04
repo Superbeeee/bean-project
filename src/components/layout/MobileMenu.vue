@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useCartStore } from '@/stores/cart'
+
 defineProps<{
   open: boolean
   theme?: string
@@ -7,6 +9,8 @@ defineProps<{
 const emit = defineEmits<{
   close: []
 }>()
+
+const cart = useCartStore()
 
 const navItems = [
   { to: '/shop', label: 'shop online|線上購買' },
@@ -65,8 +69,14 @@ const navItems = [
               </RouterLink>
             </li>
             <li>
-              <RouterLink to="/cart" @click="emit('close')">
+              <RouterLink to="/cart" class="relative" @click="emit('close')">
                 <img src="/photo/p-logo/p-cart.svg" alt="購物車" class="w-[30px]" />
+                <span
+                  v-if="cart.itemCount > 0"
+                  class="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
+                >
+                  {{ cart.itemCount }}
+                </span>
               </RouterLink>
             </li>
           </ul>
