@@ -18,10 +18,15 @@ const navItems = [
 
 <template>
   <Teleport to="body">
-    <Transition name="slide">
-      <div v-if="open" class="fixed inset-0 z-50 lg:hidden">
-        <!-- Menu Content -->
-        <div class="h-full w-[70%] bg-white px-5 py-12">
+    <div class="fixed inset-0 z-50 lg:hidden" :class="open ? '' : 'pointer-events-none'">
+      <!-- Backdrop (instant appear, fade out) -->
+      <Transition name="fade">
+        <div v-if="open" class="absolute inset-0 bg-black/10" @click="emit('close')"></div>
+      </Transition>
+
+      <!-- Menu Content (slide from left) -->
+      <Transition name="slide">
+        <div v-if="open" class="relative z-10 h-full w-[70%] bg-white px-5 py-12">
           <!-- Logo -->
           <div class="mb-8">
             <RouterLink to="/" @click="emit('close')">
@@ -66,20 +71,28 @@ const navItems = [
             </li>
           </ul>
         </div>
-
-        <!-- Backdrop -->
-        <div class="absolute inset-0 -z-10 bg-black/10" @click="emit('close')"></div>
-      </div>
-    </Transition>
+      </Transition>
+    </div>
   </Teleport>
+
 </template>
 
 <style scoped>
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.5s ease;
+/* Backdrop fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
+/* Menu panel slide from left */
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s ease;
+}
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(-100%);
