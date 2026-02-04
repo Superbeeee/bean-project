@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import "tailwindcss";
+
+/* Theme variables */
+@theme {
+  --color-primary: #D9ADA0;
+  --color-dark: #333333;
+  --color-light: #f5f5f5;
+  --color-muted: #4d4d4d;
+  --color-border: #b2b2b2;
+
+  --font-sans: "STXihei", "HEITI TC", "黑體-繁", "微軟正黑體", "黑體", sans-serif;
+  --font-serif: "Bree Serif", serif;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  line-height: 1.4;
+}
+
+/* Hamburger menu button */
+.hamburger-wrap {
+  position: absolute;
+  top: 45px;
+  right: 32px;
+  margin: 0 auto;
+  transform: translateY(-50%) scale(2);
+  z-index: 200;
+}
+
+.hamburger-label {
+  position: relative;
+  display: block;
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hamburger-label::before,
+.hamburger-label::after,
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.hamburger-white::before,
+.hamburger-white::after,
+.hamburger-white .hamburger-bar { background-color: #fff; }
+.hamburger-dark::before,
+.hamburger-dark::after,
+.hamburger-dark .hamburger-bar { background-color: #000; }
+
+.hamburger-label::before,
+.hamburger-label::after {
+  content: "";
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
+}
+
+.hamburger-label::before { top: 0; }
+.hamburger-label::after { top: 8px; }
+.hamburger-bar { top: 16px; }
+
+.hamburger-bar::before {
+  content: "豆!";
+  position: absolute;
+  top: 5px;
+  right: 0;
+  left: 0;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hamburger-white .hamburger-bar::before { color: #fff; }
+.hamburger-dark .hamburger-bar::before { color: #000; }
+
+/* Hamburger open state */
+.is-open .hamburger-label::before { left: -39px; }
+.is-open .hamburger-label::after { left: 39px; }
+.is-open .hamburger-bar::before {
+  animation:
+    moveUpThenDown 0.8s ease 0.2s forwards,
+    shakeWhileMovingUp 0.8s ease 0.2s forwards,
+    shakeWhileMovingDown 0.2s ease 0.8s forwards;
+}
+
+@keyframes moveUpThenDown {
+  0% { top: 0; }
+  50% { top: -27px; }
+  100% { top: -14px; }
+}
+
+@keyframes shakeWhileMovingUp {
+  0% { transform: rotateZ(0); }
+  25% { transform: rotateZ(-10deg); }
+  50% { transform: rotateZ(0deg); }
+  75% { transform: rotateZ(10deg); }
+  100% { transform: rotateZ(0); }
+}
+
+@keyframes shakeWhileMovingDown {
+  0% { transform: rotateZ(0); }
+  80% { transform: rotateZ(3deg); }
+  90% { transform: rotateZ(-3deg); }
+  100% { transform: rotateZ(0); }
+}
+
+/* Nav hover effect - text slides up to show Chinese */
+.nav-link-hover span {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.nav-link-hover span::before {
+  position: absolute;
+  top: 100%;
+  content: attr(data-hover);
+  font-weight: 700;
+  transform: translate3d(0, 0, 0);
+}
+
+.nav-link-hover:hover span,
+.nav-link-hover:focus span {
+  transform: translateY(-100%);
+}
+
+/* Button organic border radius */
+.btn-organic {
+  border-radius: 50% 20% / 10% 40%;
+}
+
+/* Fullpage scroll container (JS-controlled) */
+.scroll-snap-container {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+.scroll-snap-section {
+  height: 100vh;
+  width: 100%;
+}
+
+.scroll-snap-footer {
+}
+
+/* Hide body scroll when fullpage is active */
+body:has(.scroll-snap-container) {
+  overflow: hidden;
+}
+
+/* Hide scrollbar on snap container but keep scrolling */
+.scroll-snap-container::-webkit-scrollbar {
+  display: none;
+}
+.scroll-snap-container {
+  scrollbar-width: none;
+}
