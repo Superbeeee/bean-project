@@ -49,6 +49,18 @@ const router = createRouter({
       meta: { title: '購物車', headerTheme: 'dark' },
     },
     {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('@/views/CheckoutView.vue'),
+      meta: { title: '填寫訂購資訊', headerTheme: 'dark' },
+    },
+    {
+      path: '/checkout/success',
+      name: 'checkout-success',
+      component: () => import('@/views/OrderSuccessView.vue'),
+      meta: { title: '訂購完成', headerTheme: 'dark' },
+    },
+    {
       path: '/inquiry',
       name: 'inquiry',
       component: () => import('@/views/InquiryView.vue'),

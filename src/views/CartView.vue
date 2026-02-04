@@ -124,11 +124,12 @@ const cart = useCartStore()
       >
         繼續購買
       </RouterLink>
-      <button
-        class="flex-1 rounded bg-black py-3 text-center text-white transition-colors hover:bg-primary"
+      <RouterLink
+        to="/checkout"
+        class="flex-1 rounded bg-black py-3 text-center text-white no-underline transition-colors hover:bg-primary"
       >
         下一步
-      </button>
+      </RouterLink>
     </div>
   </div>
 </template>
