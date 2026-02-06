@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useInquiries } from '@/composables/useInquiries'
 
+const { t } = useI18n()
 const router = useRouter()
 const { submitting, error: inquiryError, createInquiry } = useInquiries()
 
@@ -33,14 +35,14 @@ async function handleSubmit() {
     <!-- Slogan -->
     <div class="mb-8 text-center">
       <p class="mb-4 font-serif text-lg italic">
-        It is wiser to find out than to suppose.
+        {{ t('inquiry.slogan') }}
       </p>
-      <h1 class="mb-6 text-2xl font-bold">企業大宗詢問</h1>
+      <h1 class="mb-6 text-2xl font-bold">{{ t('inquiry.title') }}</h1>
       <p class="text-sm leading-relaxed text-gray-600">
-        你也對豆間產品充滿好奇，想知道還有哪些可能？<br />
-        來吧！填妥這份豆豆VIP表格，我們一起發掘更多滋味驚喜<br />
-        豆間產品訂購滿NT.5,000以上即享95折優惠<br />
-        更多合作詢問，歡迎於營業時間來電 089-862050
+        {{ t('inquiry.desc1') }}<br />
+        {{ t('inquiry.desc2') }}<br />
+        {{ t('inquiry.desc3') }}<br />
+        {{ t('inquiry.desc4') }}
       </p>
     </div>
 
@@ -48,20 +50,20 @@ async function handleSubmit() {
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <!-- Purpose -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">詢問項目</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.purpose') }}</label>
         <select
           v-model="form.purpose"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         >
-          <option>公司贈禮</option>
-          <option>品牌合作</option>
-          <option>節慶贈禮</option>
+          <option value="公司贈禮">{{ t('inquiry.purposeGift') }}</option>
+          <option value="品牌合作">{{ t('inquiry.purposeCollab') }}</option>
+          <option value="節慶贈禮">{{ t('inquiry.purposeHoliday') }}</option>
         </select>
       </div>
 
       <!-- Company -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">公司名稱</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.company') }}</label>
         <input
           v-model="form.company"
           type="text"
@@ -71,7 +73,7 @@ async function handleSubmit() {
 
       <!-- Contact Name -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">聯絡人</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contact') }}</label>
         <input
           v-model="form.name"
           type="text"
@@ -81,7 +83,7 @@ async function handleSubmit() {
 
       <!-- Phone -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">手機號碼</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.mobile') }}</label>
         <input
           v-model="form.phone"
           type="text"
@@ -91,7 +93,7 @@ async function handleSubmit() {
 
       <!-- Company Tel -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">公司電話(分機)</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.companyTel') }}</label>
         <input
           v-model="form.companyTel"
           type="text"
@@ -101,7 +103,7 @@ async function handleSubmit() {
 
       <!-- Email -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">電子郵件</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.email') }}</label>
         <input
           v-model="form.email"
           type="email"
@@ -114,47 +116,47 @@ async function handleSubmit() {
 
       <!-- Contact Time -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">方便聯繫時間</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contactTime') }}</label>
         <select
           v-model="form.contactTime"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         >
-          <option>下午 13:00-15:00</option>
-          <option>下午 15:00-17:00</option>
-          <option>晚上 17:00-20:00</option>
+          <option value="下午 13:00-15:00">{{ t('inquiry.time1') }}</option>
+          <option value="下午 15:00-17:00">{{ t('inquiry.time2') }}</option>
+          <option value="晚上 17:00-20:00">{{ t('inquiry.time3') }}</option>
         </select>
       </div>
 
       <!-- Product -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">需求產品</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.product') }}</label>
         <select
           v-model="form.product"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         >
-          <option>豆之間豆漿</option>
-          <option>豆之間豆包</option>
-          <option>豆之間豆干</option>
+          <option value="豆之間豆漿">{{ t('inquiry.productSoyMilk') }}</option>
+          <option value="豆之間豆包">{{ t('inquiry.productTofuSkin') }}</option>
+          <option value="豆之間豆干">{{ t('inquiry.productDriedTofu') }}</option>
         </select>
       </div>
 
       <!-- Quantity -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">需求個數</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.quantity') }}</label>
         <select
           v-model="form.quantity"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         >
-          <option>10-20(個)</option>
-          <option>20-30(個)</option>
-          <option>30-40(個)</option>
-          <option>40個以上</option>
+          <option value="10-20(個)">{{ t('inquiry.qty1') }}</option>
+          <option value="20-30(個)">{{ t('inquiry.qty2') }}</option>
+          <option value="30-40(個)">{{ t('inquiry.qty3') }}</option>
+          <option value="40個以上">{{ t('inquiry.qty4') }}</option>
         </select>
       </div>
 
       <!-- Date -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">需求日期</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.date') }}</label>
         <input
           v-model="form.date"
           type="text"
@@ -164,15 +166,15 @@ async function handleSubmit() {
 
       <!-- Source -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">如何得知豆之間</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.source') }}</label>
         <select
           v-model="form.source"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         >
-          <option>FACEBOOK</option>
-          <option>Instagram</option>
-          <option>部落格介紹</option>
-          <option>報章雜誌</option>
+          <option value="FACEBOOK">{{ t('inquiry.sourceFB') }}</option>
+          <option value="Instagram">{{ t('inquiry.sourceIG') }}</option>
+          <option value="部落格介紹">{{ t('inquiry.sourceBlog') }}</option>
+          <option value="報章雜誌">{{ t('inquiry.sourceMedia') }}</option>
         </select>
       </div>
 
@@ -186,7 +188,7 @@ async function handleSubmit() {
           :disabled="submitting"
           class="rounded bg-black px-12 py-3 text-white transition-colors hover:bg-primary disabled:opacity-50"
         >
-          {{ submitting ? '送出中...' : '確定送出' }}
+          {{ submitting ? t('inquiry.submitting') : t('inquiry.submit') }}
         </button>
       </div>
     </form>

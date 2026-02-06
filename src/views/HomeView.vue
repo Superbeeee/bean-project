@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/layout/AppFooter.vue'
+
+const { t } = useI18n()
 
 const containerRef = ref<HTMLElement | null>(null)
 let isScrolling = false
@@ -118,7 +121,7 @@ const sections = [
     to: '/shop',
     image: '/img/首頁1.png',
     title: 'BEANGO! Get a Taste!',
-    button: '線上購買',
+    buttonKey: 'home.shopButton',
     type: 'image' as const,
     position: 'center',
   },
@@ -127,7 +130,7 @@ const sections = [
     to: '/art',
     video: '/video/sbs-intro.mp4',
     title: 'What is needed is a Bean Bang!',
-    button: '線上探索',
+    buttonKey: 'home.artButton',
     type: 'video' as const,
     position: 'center',
   },
@@ -136,7 +139,7 @@ const sections = [
     to: '/menu',
     image: '/img/首頁3.png',
     title: 'How about Plan Bean?',
-    button: '豆間菜單',
+    buttonKey: 'home.menuButton',
     type: 'image' as const,
     position: 'right',
   },
@@ -145,7 +148,7 @@ const sections = [
     to: '/map',
     image: '/img/首頁4.png',
     title: 'Where have you bean?',
-    button: '尋找豆間',
+    buttonKey: 'home.mapButton',
     type: 'image' as const,
     position: 'center',
   },
@@ -197,7 +200,7 @@ const sections = [
           <div
             class="btn-organic mx-auto inline-block cursor-pointer border-3 border-white px-4 py-2 text-sm tracking-wider text-white transition-all duration-500 hover:bg-primary lg:text-[26px]"
           >
-            {{ section.button }}
+            {{ t(section.buttonKey) }}
           </div>
         </div>
       </RouterLink>

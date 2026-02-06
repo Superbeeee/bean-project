@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useCartStore } from '@/stores/cart'
 import { useAuthStore } from '@/stores/auth'
 import { useFirebaseAuth } from '@/composables/useFirebaseAuth'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 defineProps<{
   open: boolean
@@ -12,15 +14,16 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const { t } = useI18n()
 const cart = useCartStore()
 const authStore = useAuthStore()
 const { logout } = useFirebaseAuth()
 
-const navItems = [
-  { to: '/shop', label: 'shop online|線上購買' },
-  { to: '/art', label: 'bean Art Present|線上探索豆間' },
-  { to: '/menu', label: 'bean Menu|豆間菜單' },
-  { to: '/map', label: 'where? bean|尋找豆間' },
+const navRoutes = [
+  { to: '/shop', labelKey: 'nav.shopOnline', hoverKey: 'nav.shopOnlineHover' },
+  { to: '/art', labelKey: 'nav.artPresent', hoverKey: 'nav.artPresentHover' },
+  { to: '/menu', labelKey: 'nav.beanMenu', hoverKey: 'nav.beanMenuHover' },
+  { to: '/map', labelKey: 'nav.whereBean', hoverKey: 'nav.whereBeanHover' },
 ]
 
 async function handleLogout() {
@@ -43,19 +46,19 @@ async function handleLogout() {
           <!-- Logo -->
           <div class="mb-8">
             <RouterLink to="/" @click="emit('close')">
-              <img src="/photo/b-logo/LOGO.png" alt="豆之間" class="w-[60px]" />
+              <img src="/photo/b-logo/LOGO.png" :alt="t('common.brandName')" class="w-[60px]" />
             </RouterLink>
           </div>
 
           <!-- Nav Links -->
           <ul class="space-y-9">
-            <li v-for="item in navItems" :key="item.to">
+            <li v-for="item in navRoutes" :key="item.to">
               <RouterLink
                 :to="item.to"
                 class="block h-10 font-serif text-[13px] leading-10 tracking-wider text-black no-underline"
                 @click="emit('close')"
               >
-                {{ item.label }}
+                {{ t(item.hoverKey) }}|{{ t(item.labelKey) }}
               </RouterLink>
             </li>
           </ul>
@@ -68,7 +71,7 @@ async function handleLogout() {
                 class="text-sm text-gray-400 hover:text-primary"
                 @click="handleLogout"
               >
-                登出
+                {{ t('auth.logout') }}
               </button>
             </template>
             <RouterLink
@@ -77,8 +80,13 @@ async function handleLogout() {
               class="block text-sm text-black no-underline hover:text-primary"
               @click="emit('close')"
             >
-              登入 / 註冊
+              {{ t('auth.loginRegister') }}
             </RouterLink>
+          </div>
+
+          <!-- Language Switcher -->
+          <div class="mt-6">
+            <LanguageSwitcher />
           </div>
 
           <!-- Social Links -->
@@ -95,12 +103,12 @@ async function handleLogout() {
             </li>
             <li>
               <RouterLink to="/inquiry" @click="emit('close')">
-                <img src="/photo/p-logo/p-ask.svg" alt="洽詢" class="w-[30px]" />
+                <img src="/photo/p-logo/p-ask.svg" :alt="t('common.inquiry')" class="w-[30px]" />
               </RouterLink>
             </li>
             <li>
               <RouterLink to="/cart" class="relative" @click="emit('close')">
-                <img src="/photo/p-logo/p-cart.svg" alt="購物車" class="w-[30px]" />
+                <img src="/photo/p-logo/p-cart.svg" :alt="t('common.cart')" class="w-[30px]" />
                 <span
                   v-if="cart.itemCount > 0"
                   class="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"

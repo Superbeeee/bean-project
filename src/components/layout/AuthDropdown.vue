@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useFirebaseAuth } from '@/composables/useFirebaseAuth'
+
+const { t } = useI18n()
 
 const props = withDefaults(defineProps<{ theme?: string }>(), {
   theme: 'dark',
@@ -57,7 +60,7 @@ async function handleLogout() {
             class="block w-full px-4 py-2 text-left text-sm text-gray-600 hover:bg-gray-50"
             @click="handleLogout"
           >
-            登出
+            {{ t('auth.logout') }}
           </button>
         </div>
       </Transition>

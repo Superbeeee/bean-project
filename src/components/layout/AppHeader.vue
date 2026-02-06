@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import MobileMenu from './MobileMenu.vue'
 import AuthDropdown from './AuthDropdown.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 import { useCartStore } from '@/stores/cart'
 
+const { t } = useI18n()
 const cart = useCartStore()
 
 const props = withDefaults(defineProps<{ theme?: string }>(), {
@@ -28,7 +31,7 @@ function toggleMenu() {
       <RouterLink to="/" class="mt-4 shrink-0 pr-4 lg:mt-[30px] lg:pr-[50px]">
         <img
           :src="theme === 'white' ? '/photo/w-logo/W-LOGO.png' : '/photo/b-logo/LOGO.png'"
-          alt="豆之間"
+          :alt="t('common.brandName')"
           class="w-[80px] lg:w-[95px]"
         />
       </RouterLink>
@@ -41,34 +44,37 @@ function toggleMenu() {
             class="nav-link-hover overflow-hidden h-5 mx-[15px]"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
-            <span data-hover="線上購買">shop online</span>
+            <span :data-hover="t('nav.shopOnline')">{{ t('nav.shopOnlineHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/art"
             class="nav-link-hover overflow-hidden h-5 mx-[15px]"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
-            <span data-hover="線上探索豆間">bean Art Present</span>
+            <span :data-hover="t('nav.artPresent')">{{ t('nav.artPresentHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/menu"
             class="nav-link-hover overflow-hidden h-5 mx-[15px]"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
-            <span data-hover="豆間菜單">bean Menu</span>
+            <span :data-hover="t('nav.beanMenu')">{{ t('nav.beanMenuHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/map"
             class="nav-link-hover overflow-hidden h-5 mx-[15px]"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
-            <span data-hover="尋找豆間">where? bean</span>
+            <span :data-hover="t('nav.whereBean')">{{ t('nav.whereBeanHover') }}</span>
           </RouterLink>
         </div>
       </nav>
 
       <!-- Desktop Social Links -->
       <ul class="hidden lg:inline-flex lg:gap-2.5 lg:pt-[50px]">
+        <li>
+          <LanguageSwitcher />
+        </li>
         <li>
           <a href="#" target="_blank">
             <img
@@ -91,7 +97,7 @@ function toggleMenu() {
           <RouterLink to="/inquiry">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-ask-logo.png' : '/photo/b-logo/b-ask.png'"
-              alt="洽詢"
+              :alt="t('common.inquiry')"
               class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
             />
           </RouterLink>
@@ -100,7 +106,7 @@ function toggleMenu() {
           <RouterLink to="/cart" class="relative">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-cart.svg' : '/photo/b-logo/b-cart.svg'"
-              alt="購物車"
+              :alt="t('common.cart')"
               class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
             />
             <span

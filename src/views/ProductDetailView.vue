@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
 import { useProducts } from '@/composables/useProducts'
+import { useProductI18n } from '@/composables/useProductI18n'
 import type { Product } from '@/data/products'
 
+const { t } = useI18n()
+const { productName, productDescription } = useProductI18n()
 const route = useRoute()
 const router = useRouter()
 const cartStore = useCartStore()
@@ -63,17 +67,17 @@ function buyNow() {
 <template>
   <!-- Loading -->
   <div v-if="loading" class="flex min-h-[50vh] items-center justify-center pt-[140px]">
-    <p class="text-gray-400">載入商品中...</p>
+    <p class="text-gray-400">{{ t('common.loading') }}</p>
   </div>
 
   <div v-else-if="product" class="flex flex-col pt-[120px] lg:flex-row lg:pt-[140px]">
     <!-- Sidebar (same as PL) -->
     <aside class="hidden w-[220px] border-r border-gray-200 px-6 py-8 lg:block">
-      <h3 class="mb-4 text-lg font-bold">商品類別</h3>
+      <h3 class="mb-4 text-lg font-bold">{{ t('shop.categoryTitle') }}</h3>
       <ul>
         <li>
           <RouterLink to="/shop" class="block py-2 text-sm text-gray-600 hover:text-primary">
-            所有商品
+            {{ t('common.allProducts') }}
           </RouterLink>
         </li>
       </ul>
@@ -83,11 +87,11 @@ function buyNow() {
     <div class="flex-1 px-6 py-4 lg:px-10 lg:py-8">
       <!-- Breadcrumb -->
       <div class="mb-6 text-sm text-gray-500">
-        <RouterLink to="/" class="hover:text-primary">首頁</RouterLink>
+        <RouterLink to="/" class="hover:text-primary">{{ t('common.home') }}</RouterLink>
         <span class="mx-1">/</span>
-        <RouterLink to="/shop" class="hover:text-primary">所有商品</RouterLink>
+        <RouterLink to="/shop" class="hover:text-primary">{{ t('common.allProducts') }}</RouterLink>
         <span class="mx-1">/</span>
-        <span>{{ product.name }}</span>
+        <span>{{ productName(product.id, product.name) }}</span>
       </div>
 
       <!-- Product Info -->
@@ -96,28 +100,28 @@ function buyNow() {
         <div class="lg:w-1/2">
           <img
             :src="product.image"
-            :alt="product.name"
+            :alt="productName(product.id, product.name)"
             class="w-full rounded-lg object-cover"
           />
         </div>
 
         <!-- Details -->
         <div class="lg:w-1/2">
-          <h2 class="mb-4 text-xl font-bold lg:text-2xl">| {{ product.name }} | 冷凍寄送 |</h2>
+          <h2 class="mb-4 text-xl font-bold lg:text-2xl">| {{ productName(product.id, product.name) }} | {{ t('product.frozenShipping') }} |</h2>
 
           <div class="mb-4 flex items-center gap-3">
-            <span class="text-gray-400 line-through">原價 ${{ product.originalPrice }}</span>
-            <span class="text-xl font-bold text-primary">特價 ${{ product.price }}</span>
+            <span class="text-gray-400 line-through">{{ t('common.originalPrice') }} ${{ product.originalPrice }}</span>
+            <span class="text-xl font-bold text-primary">{{ t('common.salePrice') }} ${{ product.price }}</span>
           </div>
 
           <p v-if="product.description" class="mb-4 whitespace-pre-line text-sm leading-relaxed text-gray-600">
-            {{ product.description }}
+            {{ productDescription(product.id, product.description) }}
           </p>
 
           <p class="mb-6 text-sm text-gray-500">
-            貨到付款 信用卡支付 ATM櫃員機
+            {{ t('product.paymentMethods') }}
             <br />
-            超商條碼 超商代碼
+            {{ t('product.paymentMethods2') }}
           </p>
 
           <!-- Quantity -->
@@ -143,13 +147,13 @@ function buyNow() {
               class="flex-1 rounded bg-black py-3 text-center text-white transition-colors hover:bg-primary"
               @click="buyNow"
             >
-              直接購買
+              {{ t('product.buyNow') }}
             </button>
             <button
               class="flex-1 rounded border border-black py-3 text-center transition-colors hover:bg-gray-100"
               @click="addToCart"
             >
-              加入購物車
+              {{ t('product.addToCart') }}
             </button>
           </div>
         </div>
@@ -157,25 +161,25 @@ function buyNow() {
 
       <!-- Product Specs -->
       <section v-if="product.specs" class="border-t border-gray-200 pt-8">
-        <h3 class="mb-4 text-lg font-bold">商品介紹</h3>
+        <h3 class="mb-4 text-lg font-bold">{{ t('product.introTitle') }}</h3>
         <div class="mb-4 text-sm leading-relaxed text-gray-600">
-          <p>過敏原:本產品含有黃豆製品</p>
-          <p>金黃細緻,濃醇豆香</p>
-          <p>純素</p>
-          <p>堅持不添加化學消泡劑</p>
-          <p>100%國產非基因改造黃豆</p>
+          <p>{{ t('product.introAllergen') }}</p>
+          <p>{{ t('product.introGolden') }}</p>
+          <p>{{ t('product.introVegan') }}</p>
+          <p>{{ t('product.introNoChemical') }}</p>
+          <p>{{ t('product.introNonGMO') }}</p>
         </div>
 
-        <h4 class="mb-3 font-bold">規格與注意事項</h4>
+        <h4 class="mb-3 font-bold">{{ t('product.specsTitle') }}</h4>
         <div class="mb-4">
-          <h5 class="mb-2 font-semibold">商品規格</h5>
+          <h5 class="mb-2 font-semibold">{{ t('product.specsSubtitle') }}</h5>
           <div class="text-sm leading-relaxed text-gray-600">
             <p v-for="(spec, i) in product.specs" :key="i">{{ spec }}</p>
           </div>
         </div>
 
         <div v-if="product.nutrition">
-          <h5 class="mb-2 font-semibold">營養標示</h5>
+          <h5 class="mb-2 font-semibold">{{ t('product.nutritionTitle') }}</h5>
           <div class="text-sm leading-relaxed text-gray-600">
             <p v-for="(n, i) in product.nutrition" :key="i">{{ n }}</p>
           </div>
@@ -187,8 +191,8 @@ function buyNow() {
   <!-- Product not found -->
   <div v-else class="flex min-h-[50vh] items-center justify-center pt-[140px]">
     <div class="text-center">
-      <p class="mb-4 text-lg text-gray-500">找不到此商品</p>
-      <RouterLink to="/shop" class="text-primary hover:underline">回到商品列表</RouterLink>
+      <p class="mb-4 text-lg text-gray-500">{{ t('product.notFound') }}</p>
+      <RouterLink to="/shop" class="text-primary hover:underline">{{ t('product.backToList') }}</RouterLink>
     </div>
   </div>
 </template>

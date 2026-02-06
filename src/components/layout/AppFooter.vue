@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -13,7 +16,7 @@
           target="_blank"
           class="text-inherit no-underline"
         >
-          台東縣池上鄉中山路通水巷12號
+          {{ t('footer.address') }}
         </a>
         |
         <a href="tel:089862050" class="text-inherit no-underline">089-862050</a>
@@ -48,7 +51,7 @@
             <RouterLink to="/inquiry">
               <img
                 src="/photo/b-logo/b-ask.png"
-                alt="洽詢"
+                :alt="t('common.inquiry')"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />
             </RouterLink>
@@ -57,7 +60,7 @@
             <RouterLink to="/cart">
               <img
                 src="/photo/b-logo/b-cart.svg"
-                alt="購物車"
+                :alt="t('common.cart')"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />
             </RouterLink>
@@ -72,10 +75,7 @@
 
     <!-- Reference -->
     <div class="bg-white px-4 pt-8 pb-4 text-center text-xs">
-      <p>
-        本網站為緯育TibaMe前端設計工程師班第74期學員專題作品，本平台僅供學習、展示之用。
-        參考資源:豆之間、池上鄉農會、葉海地老師作品、部落客不羈、龜記、.but。
-      </p>
+      <p>{{ t('footer.disclaimer') }}</p>
     </div>
   </footer>
 </template>

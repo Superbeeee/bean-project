@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useProducts } from '@/composables/useProducts'
+import { useProductI18n } from '@/composables/useProductI18n'
 
+const { t } = useI18n()
+const { categoryName, productName } = useProductI18n()
 const { products, categories, loading, error, fetchProducts, fetchCategories } = useProducts()
 
 const activeCategory = ref('all')
@@ -21,7 +25,7 @@ onMounted(() => {
   <div class="flex flex-col pt-[120px] lg:flex-row lg:pt-[140px]">
     <!-- Sidebar -->
     <aside class="w-full border-b border-gray-200 px-6 py-4 lg:w-[220px] lg:border-b-0 lg:border-r lg:py-8">
-      <h3 class="mb-4 text-lg font-bold">商品類別</h3>
+      <h3 class="mb-4 text-lg font-bold">{{ t('shop.categoryTitle') }}</h3>
       <ul class="flex flex-wrap gap-2 lg:flex-col lg:gap-0">
         <li v-for="cat in categories" :key="cat.id">
           <button
@@ -29,7 +33,7 @@ onMounted(() => {
             :class="activeCategory === cat.id ? 'font-bold text-primary' : 'text-gray-600'"
             @click="activeCategory = cat.id"
           >
-            {{ cat.name }}
+            {{ categoryName(cat.id, cat.name) }}
           </button>
         </li>
       </ul>
@@ -39,14 +43,14 @@ onMounted(() => {
     <div class="flex-1 px-6 py-4 lg:px-10 lg:py-8">
       <!-- Breadcrumb -->
       <div class="mb-6 text-sm text-gray-500">
-        <RouterLink to="/" class="hover:text-primary">首頁</RouterLink>
+        <RouterLink to="/" class="hover:text-primary">{{ t('common.home') }}</RouterLink>
         <span class="mx-1">/</span>
-        <span>所有商品</span>
+        <span>{{ t('common.allProducts') }}</span>
       </div>
 
       <!-- Loading -->
       <div v-if="loading" class="flex items-center justify-center py-20">
-        <p class="text-gray-400">載入商品中...</p>
+        <p class="text-gray-400">{{ t('common.loading') }}</p>
       </div>
 
       <!-- Error -->
@@ -64,19 +68,19 @@ onMounted(() => {
             <div class="mb-3 aspect-square overflow-hidden rounded-lg bg-gray-100">
               <img
                 :src="product.image"
-                :alt="product.name"
+                :alt="productName(product.id, product.name)"
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
             </div>
             <h3 class="mb-1 text-sm font-medium text-gray-900 lg:text-base">
-              {{ product.name }}
+              {{ productName(product.id, product.name) }}
             </h3>
             <div class="flex items-center gap-2">
               <span class="text-xs text-gray-400 line-through">
-                原價 ${{ product.originalPrice }}
+                {{ t('common.originalPrice') }} ${{ product.originalPrice }}
               </span>
               <span class="text-sm font-bold text-primary">
-                特價 ${{ product.price }}
+                {{ t('common.salePrice') }} ${{ product.price }}
               </span>
             </div>
           </RouterLink>
