@@ -61,6 +61,12 @@ const router = createRouter({
       meta: { title: '訂購完成', headerTheme: 'dark' },
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/LoginView.vue'),
+      meta: { title: '登入 / 註冊', headerTheme: 'dark' },
+    },
+    {
       path: '/inquiry',
       name: 'inquiry',
       component: () => import('@/views/InquiryView.vue'),

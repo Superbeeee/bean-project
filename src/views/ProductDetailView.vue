@@ -1,16 +1,36 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { products } from '@/data/products'
 import { useCartStore } from '@/stores/cart'
+import { useProducts } from '@/composables/useProducts'
+import type { Product } from '@/data/products'
 
 const route = useRoute()
 const router = useRouter()
 const cartStore = useCartStore()
+const { getProductById, fetchProducts } = useProducts()
 
-const product = computed(() => products.find((p) => p.id === route.params.id))
-
+const product = ref<Product | null>(null)
+const loading = ref(true)
 const quantity = ref(1)
+
+async function loadProduct(id: string) {
+  loading.value = true
+  product.value = await getProductById(id)
+  loading.value = false
+}
+
+onMounted(async () => {
+  await fetchProducts()
+  await loadProduct(route.params.id as string)
+})
+
+watch(() => route.params.id, async (newId) => {
+  if (newId) {
+    quantity.value = 1
+    await loadProduct(newId as string)
+  }
+})
 
 function increase() {
   quantity.value++
@@ -41,7 +61,12 @@ function buyNow() {
 </script>
 
 <template>
-  <div v-if="product" class="flex flex-col pt-[120px] lg:flex-row lg:pt-[140px]">
+  <!-- Loading -->
+  <div v-if="loading" class="flex min-h-[50vh] items-center justify-center pt-[140px]">
+    <p class="text-gray-400">載入商品中...</p>
+  </div>
+
+  <div v-else-if="product" class="flex flex-col pt-[120px] lg:flex-row lg:pt-[140px]">
     <!-- Sidebar (same as PL) -->
     <aside class="hidden w-[220px] border-r border-gray-200 px-6 py-8 lg:block">
       <h3 class="mb-4 text-lg font-bold">商品類別</h3>

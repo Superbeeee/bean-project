@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useInquiries } from '@/composables/useInquiries'
 
 const router = useRouter()
+const { submitting, error: inquiryError, createInquiry } = useInquiries()
 
 const form = reactive({
   purpose: '公司贈禮',
@@ -18,8 +20,11 @@ const form = reactive({
   source: 'FACEBOOK',
 })
 
-function handleSubmit() {
-  router.push('/inquiry/success')
+async function handleSubmit() {
+  const success = await createInquiry(form)
+  if (success) {
+    router.push('/inquiry/success')
+  }
 }
 </script>
 
@@ -171,13 +176,17 @@ function handleSubmit() {
         </select>
       </div>
 
+      <!-- Error -->
+      <p v-if="inquiryError" class="text-center text-sm text-red-500">{{ inquiryError }}</p>
+
       <!-- Submit -->
       <div class="pt-6 pb-12 text-center">
         <button
           type="submit"
-          class="rounded bg-black px-12 py-3 text-white transition-colors hover:bg-primary"
+          :disabled="submitting"
+          class="rounded bg-black px-12 py-3 text-white transition-colors hover:bg-primary disabled:opacity-50"
         >
-          確定送出
+          {{ submitting ? '送出中...' : '確定送出' }}
         </button>
       </div>
     </form>

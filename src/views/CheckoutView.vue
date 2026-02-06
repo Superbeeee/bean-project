@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
+import { useAuthStore } from '@/stores/auth'
+import { useOrders } from '@/composables/useOrders'
 
 const router = useRouter()
 const cart = useCartStore()
+const authStore = useAuthStore()
+const { submitting, error: orderError, createOrder } = useOrders()
 
 const form = reactive({
   name: '',
@@ -18,9 +22,37 @@ const form = reactive({
   note: '',
 })
 
-function handleSubmit() {
-  cart.clearCart()
-  router.push('/checkout/success')
+onMounted(() => {
+  if (authStore.profile?.savedAddress) {
+    const saved = authStore.profile.savedAddress
+    form.name = saved.name
+    form.phone = saved.phone
+    form.city = saved.city
+    form.district = saved.district
+    form.address = saved.address
+  }
+  if (authStore.user?.email) {
+    form.email = authStore.user.email
+  }
+})
+
+async function handleSubmit() {
+  const orderId = await createOrder(
+    form,
+    cart.items,
+    {
+      subtotal: cart.subtotal,
+      shippingFee: cart.shippingFee,
+      discount: cart.discount,
+      total: cart.total,
+    },
+    authStore.user?.uid ?? null
+  )
+
+  if (orderId) {
+    cart.clearCart()
+    router.push({ name: 'checkout-success', query: { orderId } })
+  }
 }
 </script>
 
@@ -173,6 +205,9 @@ function handleSubmit() {
         ></textarea>
       </div>
 
+      <!-- Error -->
+      <p v-if="orderError" class="text-sm text-red-500">{{ orderError }}</p>
+
       <!-- Buttons -->
       <div class="flex gap-4 pt-6">
         <RouterLink
@@ -183,9 +218,10 @@ function handleSubmit() {
         </RouterLink>
         <button
           type="submit"
-          class="flex-1 rounded bg-black py-3 text-center text-white transition-colors hover:bg-primary"
+          :disabled="submitting"
+          class="flex-1 rounded bg-black py-3 text-center text-white transition-colors hover:bg-primary disabled:opacity-50"
         >
-          確認送出
+          {{ submitting ? '送出中...' : '確認送出' }}
         </button>
       </div>
     </form>

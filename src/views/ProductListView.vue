@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { products, categories } from '@/data/products'
+import { ref, computed, onMounted } from 'vue'
+import { useProducts } from '@/composables/useProducts'
+
+const { products, categories, loading, error, fetchProducts, fetchCategories } = useProducts()
 
 const activeCategory = ref('all')
 
 const filteredProducts = computed(() => {
-  if (activeCategory.value === 'all') return products
-  return products.filter((p) => p.category === activeCategory.value)
+  if (activeCategory.value === 'all') return products.value
+  return products.value.filter((p) => p.category === activeCategory.value)
+})
+
+onMounted(() => {
+  fetchProducts()
+  fetchCategories()
 })
 </script>
 
@@ -37,8 +44,18 @@ const filteredProducts = computed(() => {
         <span>所有商品</span>
       </div>
 
+      <!-- Loading -->
+      <div v-if="loading" class="flex items-center justify-center py-20">
+        <p class="text-gray-400">載入商品中...</p>
+      </div>
+
+      <!-- Error -->
+      <div v-else-if="error" class="flex items-center justify-center py-20">
+        <p class="text-red-500">{{ error }}</p>
+      </div>
+
       <!-- Products -->
-      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+      <ul v-else class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
         <li v-for="product in filteredProducts" :key="product.id">
           <RouterLink
             :to="`/product/${product.id}`"

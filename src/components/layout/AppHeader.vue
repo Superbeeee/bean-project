@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import MobileMenu from './MobileMenu.vue'
+import AuthDropdown from './AuthDropdown.vue'
 import { useCartStore } from '@/stores/cart'
 
 const cart = useCartStore()
@@ -109,6 +110,9 @@ function toggleMenu() {
               {{ cart.itemCount }}
             </span>
           </RouterLink>
+        </li>
+        <li>
+          <AuthDropdown :theme="theme" />
         </li>
       </ul>
 

@@ -11,6 +11,13 @@ dist/
 # Logs
 *.log
 
+# Environment
+.env.local
+.env.*.local
+
+# Firebase Service Account Key
+serviceAccountKey.json
+
 # OS
 .DS_Store
 Thumbs.db

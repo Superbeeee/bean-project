@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
+import { useAuthStore } from '@/stores/auth'
+import { useFirebaseAuth } from '@/composables/useFirebaseAuth'
 
 defineProps<{
   open: boolean
@@ -11,6 +13,8 @@ const emit = defineEmits<{
 }>()
 
 const cart = useCartStore()
+const authStore = useAuthStore()
+const { logout } = useFirebaseAuth()
 
 const navItems = [
   { to: '/shop', label: 'shop online|線上購買' },
@@ -18,6 +22,11 @@ const navItems = [
   { to: '/menu', label: 'bean Menu|豆間菜單' },
   { to: '/map', label: 'where? bean|尋找豆間' },
 ]
+
+async function handleLogout() {
+  await logout()
+  emit('close')
+}
 </script>
 
 <template>
@@ -51,8 +60,29 @@ const navItems = [
             </li>
           </ul>
 
+          <!-- Auth -->
+          <div class="mt-10 border-t border-gray-100 pt-6">
+            <template v-if="authStore.isLoggedIn">
+              <p class="mb-2 text-sm text-gray-600">{{ authStore.displayName }}</p>
+              <button
+                class="text-sm text-gray-400 hover:text-primary"
+                @click="handleLogout"
+              >
+                登出
+              </button>
+            </template>
+            <RouterLink
+              v-else
+              to="/login"
+              class="block text-sm text-black no-underline hover:text-primary"
+              @click="emit('close')"
+            >
+              登入 / 註冊
+            </RouterLink>
+          </div>
+
           <!-- Social Links -->
-          <ul class="mt-10 flex gap-2.5">
+          <ul class="mt-6 flex gap-2.5">
             <li>
               <a href="#" target="_blank">
                 <img src="/photo/p-logo/p-fb.svg" alt="Facebook" class="w-[30px]" />
