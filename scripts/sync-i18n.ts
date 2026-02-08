@@ -35,6 +35,14 @@ const OUTPUT_DIR = resolve(__dirname, '..', 'src', 'locales')
 if (!SHEET_ID || !API_KEY) {
   console.error('❌ 缺少環境變數 GOOGLE_SHEET_ID 或 GOOGLE_SHEETS_API_KEY')
   console.error('   請在 .env.local 中設定這兩個變數')
+  console.error('')
+  console.error('   詳細設定步驟請參考：docs/I18N_SETUP.md')
+  console.error('')
+  console.error('   快速檢查清單：')
+  console.error('   1. 建立 .env.local 檔案')
+  console.error('   2. 在 Google Cloud Console 取得 API 金鑰')
+  console.error('   3. 建立 Google Sheet 並取得 Sheet ID')
+  console.error('   4. 將 Sheet 設定為公開檢視')
   process.exit(1)
 }
 
@@ -57,7 +65,29 @@ async function fetchTab(tab: string): Promise<string[][]> {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(tab)}?key=${API_KEY}`
   const res = await fetch(url)
   if (!res.ok) {
-    throw new Error(`Failed to fetch tab "${tab}": ${res.status} ${res.statusText}`)
+    const errorBody = await res.text()
+    let errorMessage = `Failed to fetch tab "${tab}": ${res.status} ${res.statusText}`
+
+    // 嘗試解析錯誤訊息
+    try {
+      const errorData = JSON.parse(errorBody)
+      if (errorData.error?.message) {
+        errorMessage += `\n詳細錯誤: ${errorData.error.message}`
+
+        // 提供更友善的錯誤提示
+        if (errorData.error.message.includes('API key not valid')) {
+          errorMessage += '\n💡 請檢查 .env.local 中的 GOOGLE_SHEETS_API_KEY 是否正確'
+        } else if (errorData.error.message.includes('not found')) {
+          errorMessage += '\n💡 請檢查 Google Sheet 是否包含名為 "' + tab + '" 的分頁'
+        } else if (errorData.error.message.includes('permission')) {
+          errorMessage += '\n💡 請確認 Google Sheet 已設定為「知道連結的任何人都能檢視」'
+        }
+      }
+    } catch {
+      // 無法解析 JSON，使用原始錯誤訊息
+    }
+
+    throw new Error(errorMessage)
   }
   const data = (await res.json()) as { values?: string[][] }
   return data.values ?? []
@@ -65,6 +95,9 @@ async function fetchTab(tab: string): Promise<string[][]> {
 
 async function main() {
   console.log('🔄 開始從 Google Sheet 同步翻譯...')
+  console.log(`📊 Sheet ID: ${SHEET_ID}`)
+  console.log(`📝 將同步 ${TABS.length} 個分頁: ${TABS.join(', ')}`)
+  console.log('')
 
   // 每個 locale 建一個累積物件
   const localeData: Record<string, Record<string, unknown>> = {}
@@ -72,13 +105,18 @@ async function main() {
     localeData[locale] = {}
   }
 
+  let hasErrors = false
+  let totalKeys = 0
+
   for (const tab of TABS) {
     console.log(`  📄 讀取 tab: ${tab}`)
     let rows: string[][]
     try {
       rows = await fetchTab(tab)
     } catch (err) {
-      console.error(`  ⚠️  無法讀取 tab "${tab}":`, (err as Error).message)
+      console.error(`  ❌ 無法讀取 tab "${tab}":`)
+      console.error(`     ${(err as Error).message}`)
+      hasErrors = true
       continue
     }
 
@@ -92,21 +130,28 @@ async function main() {
     const keyCol = headers.indexOf('key')
     if (keyCol === -1) {
       console.warn(`  ⚠️  Tab "${tab}" 找不到 "key" 欄，跳過`)
+      console.warn(`     實際欄位: ${headers.join(', ')}`)
       continue
     }
 
     const localeColMap: Record<string, number> = {}
     for (const locale of LOCALES) {
       const col = headers.indexOf(locale)
-      if (col !== -1) localeColMap[locale] = col
+      if (col !== -1) {
+        localeColMap[locale] = col
+      } else {
+        console.warn(`     ⚠️  找不到 "${locale}" 欄位`)
+      }
     }
 
     // 解析資料列
+    let tabKeys = 0
     for (let r = 1; r < rows.length; r++) {
       const row = rows[r]
       const key = row[keyCol]?.trim()
       if (!key) continue
 
+      tabKeys++
       for (const locale of LOCALES) {
         const col = localeColMap[locale]
         if (col === undefined) continue
@@ -118,7 +163,11 @@ async function main() {
         }
       }
     }
+    console.log(`     ✓ 成功讀取 ${tabKeys} 個翻譯鍵`)
+    totalKeys += tabKeys
   }
+
+  console.log('')
 
   // 寫入 JSON 檔案
   for (const locale of LOCALES) {
@@ -127,7 +176,14 @@ async function main() {
     console.log(`  ✅ ${filePath}`)
   }
 
-  console.log('🎉 同步完成！')
+  console.log('')
+  console.log(`🎉 同步完成！共處理 ${totalKeys} 個翻譯鍵`)
+
+  if (hasErrors) {
+    console.log('')
+    console.warn('⚠️  同步過程中遇到一些錯誤，請檢查上方的錯誤訊息')
+    console.warn('   詳細設定步驟請參考：docs/I18N_SETUP.md')
+  }
 }
 
 main().catch((err) => {

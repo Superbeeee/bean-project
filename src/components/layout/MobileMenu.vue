@@ -58,7 +58,7 @@ async function handleLogout() {
                 class="block h-10 font-serif text-[13px] leading-10 tracking-wider text-black no-underline"
                 @click="emit('close')"
               >
-                {{ t(item.hoverKey) }}|{{ t(item.labelKey) }}
+                {{ t(item.labelKey) }}
               </RouterLink>
             </li>
           </ul>

@@ -1,0 +1,19 @@
+key,tw,en,jp,ko,notes
+nav.shopOnline,線上購買,Shop Online,オンラインショップ,온라인 쇼핑,導航列-線上購買
+nav.shopOnlineHover,線上購買,shop online,オンラインショップ,온라인 쇼핑,
+nav.artPresent,線上探索豆間,Bean Art Present,アート展示,아트 프레젠트,導航列-藝術展示
+nav.artPresentHover,線上探索豆間,bean Art Present,アート展示,아트 프레젠트,
+nav.beanMenu,豆間菜單,Bean Menu,豆の間メニュー,메뉴,導航列-菜單
+nav.beanMenuHover,豆間菜單,bean Menu,豆の間メニュー,메뉴,
+nav.whereBean,尋找豆間,Where? Bean,豆の間を探す,찾아오시는 길,導航列-尋找豆間
+nav.whereBeanHover,尋找豆間,where? bean,豆の間を探す,찾아오시는 길,
+common.brandName,豆之間,Soybean Space,豆の間,콩사이,品牌名稱
+common.home,首頁,Home,ホーム,홈,
+common.allProducts,所有商品,All Products,すべての商品,모든 상품,
+common.originalPrice,原價,Original,元の価格,정가,
+common.salePrice,特價,Sale,セール,할인가,
+common.loading,載入商品中...,Loading...,読み込み中...,로딩 중...,
+common.backToTop,飛上去,Top,トップへ,위로,返回頂部按鈕
+common.backToHome,回到首頁,Back to Home,ホームへ,홈으로,
+common.inquiry,洽詢,Inquiry,問い合わせ,문의,
+common.cart,購物車,Cart,カート,장바구니,
