@@ -15,8 +15,9 @@ dist/
 .env.local
 .env.*.local
 
-# Firebase Service Account Key
+# Service Account Keys
 serviceAccountKey.json
+service-account.json
 
 # OS
 .DS_Store

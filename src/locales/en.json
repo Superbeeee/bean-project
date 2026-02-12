@@ -286,5 +286,33 @@
     "bean": "Bean Products",
     "bun": "Rice Buns",
     "cookie": "Rice Crackers"
+  },
+  "art": {
+    "intro": "Soybean Space — traditionally a place for making soy products, known as 'Dou-Zi-Jian' in Taiwanese.",
+    "subtitle": "| Chishang Soybean Space | The distance between land and farmers | The relationship between farmers and the association |\n| The relationship between the association and consumers | All are close partners in a wonderful relationship |",
+    "granary": {
+      "title": "The Story of Chishang Granary",
+      "subtitle": "Granary X Vision",
+      "poem": "The treasure trove of Chishang rice\nis the granary\nBuildings may deteriorate with time\nbut the diligent spirit of farmers\ncan be preserved in a new vision",
+      "sceneTitle": "About the Space",
+      "scene": "Soybean Space was converted from an abandoned granary by Chishang Farmers' Association.\nIt preserves the traditional wooden granary imagery,\nwith abundant natural lighting, creating a tall and bright space with a touch of nostalgic charm.\nThe roof retains parts of the former large rice milling machine,\nblending farmhouse heritage into the architecture.\nNot forgetting the past while rapidly evolving,\nit is a new perspective and a new culinary granary.",
+      "history": "The rice paddies of Chishang spread steadily beneath the majestic Central Mountain Range, changing their appearance through the seasons — sometimes mirror-clear, sometimes swaying gracefully, sometimes fresh green, and sometimes golden as the sun. Year after year, nurtured by diligent farmers, they feed the people of Chishang.\n\nOne place nurtures its people. Since the Japanese colonial period, Chishang has thrived on agriculture. Blessed with ideal sunshine and fertile soil, a group of land-loving farmers settled here. The beauty of Chishang lies not only in its vast views but also in the shared goodwill of its community."
+    },
+    "revert": {
+      "title": "Revert to Earth",
+      "subtitle": "Art X Revival",
+      "poem": "The scent of rain-moistened earth rises slowly,\n\nlike a silent hymn from the common people.",
+      "poemSource": "Tagore, Stray Birds #310",
+      "conceptTitle": "Artist's Concept",
+      "concept": "Reviving ancient Amis pottery techniques and exploring possibilities from tradition to contemporary creation.\nFrom digging, drying, pounding, refining clay to overnight open-field firing to create pottery pieces — learning from the land through physical practice.\nThe work suspends hundreds of pottery pieces with hemp threads, creating a multi-layered circular space.\nIn the wood-ash colored old granary, it feels like a time tunnel and a spiritual ritual of humanity's endless tracing back to the earth.\nThe circle symbolizes harmony, unity, and completeness.",
+      "artist": "Artist / Heidi Yip\nBorn in Hong Kong in 1978,\ngraduated from Ontario College of Art and Design,\ntraveled to Mexico, Tibet, Gobi, New York for creative inspiration.\nFinally came to Taiwan,\na small island surrounded by the Pacific Ocean,\nwhich ignited her limitless creative passion."
+    },
+    "bean": {
+      "title": "Soybean Space | Dou-Zi-Jian",
+      "subtitle": "Era X Realization",
+      "poem": "Dou-Zi-Jian\nTraditionally a place for making soy products\n\nSoybean Space\nA new era where time and art\nare realized together",
+      "comboTitle": "The Connection",
+      "combo": "Chishang Soybean Space bears the traces of the old granary's history, the artist's vision of Chishang,\nthe nostalgic flavors Chishang locals remember, and the rebirth of the old granary.\nChishang cultivates about 20 hectares of soybeans, supporting local farmers,\nsolving sales challenges, supporting domestic grains, shortening food miles.\nChishang rice is excellent, Chishang soybeans are fragrant, Chishang fruits are sweet.\nWe hope Soybean Space shows you a different side of Chishang."
+    }
   }
 }
