@@ -243,41 +243,41 @@
     "notFound": "Product not found",
     "backToList": "Back to products",
     "soy-milk": {
-      "name": "Soybean Space | Domestic Soy Milk",
+      "name": "Soybean Space {'|'} Domestic Soy Milk",
       "description": "[Frozen Home Delivery]\nAfter thawing frozen soy milk,\nthe protein undergoes some changes.\nThe thawed soy milk may appear with fine tofu threads\nand oil-water separation.\nThis is normal and not a defect!\nPlease heat before drinking."
     },
     "tofu-skin": {
-      "name": "Soybean Space | Tofu Skin"
+      "name": "Soybean Space {'|'} Tofu Skin"
     },
     "dried-tofu": {
-      "name": "Soybean Space | Salt-brine Dried Tofu"
+      "name": "Soybean Space {'|'} Salt-brine Dried Tofu"
     },
     "black-dried-tofu": {
-      "name": "Soybean Space | Secret Dried Tofu"
+      "name": "Soybean Space {'|'} Secret Dried Tofu"
     },
     "soy-bun": {
-      "name": "Rice Bun | Soy Milk Flavor"
+      "name": "Rice Bun {'|'} Soy Milk Flavor"
     },
     "red-bean-bun": {
-      "name": "Rice Bun | Red Bean Flavor"
+      "name": "Rice Bun {'|'} Red Bean Flavor"
     },
     "pumpkin-bun": {
-      "name": "Rice Bun | Pumpkin Flavor"
+      "name": "Rice Bun {'|'} Pumpkin Flavor"
     },
     "brown-sugar-bun": {
-      "name": "Rice Bun | Brown Sugar Flavor"
+      "name": "Rice Bun {'|'} Brown Sugar Flavor"
     },
     "pepper-cookie": {
-      "name": "Chishang Rice Cracker | Pepper Salt"
+      "name": "Chishang Rice Cracker {'|'} Pepper Salt"
     },
     "curry-cookie": {
-      "name": "Chishang Rice Cracker | Curry Turmeric"
+      "name": "Chishang Rice Cracker {'|'} Curry Turmeric"
     },
     "quinoa-cookie": {
-      "name": "Chishang Rice Cracker | Red Quinoa"
+      "name": "Chishang Rice Cracker {'|'} Red Quinoa"
     },
     "cheese-cookie": {
-      "name": "Chishang Rice Cracker | Cheese"
+      "name": "Chishang Rice Cracker {'|'} Cheese"
     }
   },
   "category": {
@@ -289,7 +289,7 @@
   },
   "art": {
     "intro": "Soybean Space — traditionally a place for making soy products, known as 'Dou-Zi-Jian' in Taiwanese.",
-    "subtitle": "| Chishang Soybean Space | The distance between land and farmers | The relationship between farmers and the association |\n| The relationship between the association and consumers | All are close partners in a wonderful relationship |",
+    "subtitle": "{'|'} Chishang Soybean Space {'|'} The distance between land and farmers {'|'} The relationship between farmers and the association {'|'}\n{'|'} The relationship between the association and consumers {'|'} All are close partners in a wonderful relationship {'|'}",
     "granary": {
       "title": "The Story of Chishang Granary",
       "subtitle": "Granary X Vision",
@@ -308,7 +308,7 @@
       "artist": "Artist / Heidi Yip\nBorn in Hong Kong in 1978,\ngraduated from Ontario College of Art and Design,\ntraveled to Mexico, Tibet, Gobi, New York for creative inspiration.\nFinally came to Taiwan,\na small island surrounded by the Pacific Ocean,\nwhich ignited her limitless creative passion."
     },
     "bean": {
-      "title": "Soybean Space | Dou-Zi-Jian",
+      "title": "Soybean Space {'|'} Dou-Zi-Jian",
       "subtitle": "Era X Realization",
       "poem": "Dou-Zi-Jian\nTraditionally a place for making soy products\n\nSoybean Space\nA new era where time and art\nare realized together",
       "comboTitle": "The Connection",

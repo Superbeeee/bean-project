@@ -175,7 +175,9 @@ async function main() {
         // 空值回退到 tw
         const finalValue = value || (locale !== 'tw' ? (row[localeColMap['tw']]?.trim() ?? '') : '')
         if (finalValue) {
-          setNestedValue(localeData[locale], key, finalValue)
+          // vue-i18n 使用 | 作為複數語法分隔符，需要轉義裝飾性的 |
+          const escapedValue = finalValue.replace(/\|/g, "{'|'}")
+          setNestedValue(localeData[locale], key, escapedValue)
         }
       }
     }
