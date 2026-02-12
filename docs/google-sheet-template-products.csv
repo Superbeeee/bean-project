@@ -1,20 +1,20 @@
 key,tw,en,jp,ko,notes
 product.frozenShipping,冷凍寄送,Frozen Shipping,冷凍配送,냉동 배송,商品詳情-冷凍寄送標籤
 product.paymentMethods,貨到付款 信用卡支付 ATM櫃員機,Cash on Delivery / Credit Card / ATM,代金引換 / クレジットカード / ATM,착불 / 신용카드 / ATM,支付方式
-product.paymentMethods2,超商條碼 超商代碼,Convenience Store Barcode / Code,コンビニバーコード / コード,편의점 바코드 / 코드,
+product.paymentMethods2,超商條碼 超商代碼,Convenience Store Barcode / Code,コンビニ決済,편의점 결제,
 product.buyNow,直接購買,Buy Now,今すぐ購入,바로 구매,
-product.addToCart,加入購物車,Add to Cart,カートに追加,장바구니에 추가,
-product.introTitle,商品介紹,Product Description,商品説明,상품 설명,
-product.introAllergen,過敏原:本產品含有黃豆製品,Allergen: Contains soy products,アレルゲン:本製品には大豆製品が含まれています,알레르기 정보: 대두 제품 함유,
-product.introGolden,金黃細緻,濃醇豆香,Golden and rich soy aroma,黄金の繊細で濃厚な豆の香り,황금빛 고소한 향,
-product.introVegan,純素,Vegan,ヴィーガン,비건,
+product.addToCart,加入購物車,Add to Cart,カートに追加,장바구니 담기,
+product.introTitle,商品介紹,Product Description,商品紹介,상품 소개,
+product.introAllergen,過敏原:本產品含有黃豆製品,Allergen: Contains soy products,アレルギー：大豆製品を含みます,알레르기: 대두 제품 포함,
+product.introGolden,"金黃細緻,濃醇豆香","Golden, rich soy aroma",黄金色で濃厚な豆の香り,황금빛 진한 콩 향기,
+product.introVegan,純素,Vegan,ビーガン,비건,
 product.introNoChemical,堅持不添加化學消泡劑,No chemical defoamers added,化学消泡剤不使用,화학 소포제 무첨가,
-product.introNonGMO,100%國產非基因改造黃豆,100% domestic non-GMO soybeans,100%国産非遺伝子組換え大豆,100% 국산 비유전자변형 콩,
-product.specsTitle,規格與注意事項,Specifications & Notes,仕様と注意事項,규격 및 주의사항,
-product.specsSubtitle,商品規格,Product Specs,商品仕様,상품 규격,
-product.nutritionTitle,營養標示,Nutrition Facts,栄養成分表示,영양 성분표,
+product.introNonGMO,100%國產非基因改造黃豆,100% domestic non-GMO soybeans,100%国産非遺伝子組み換え大豆,100% 국산 비유전자변형 대두,
+product.specsTitle,規格與注意事項,Specifications & Notes,仕様と注意事項,사양 및 주의사항,
+product.specsSubtitle,商品規格,Product Specs,商品仕様,상품 사양,
+product.nutritionTitle,營養標示,Nutrition Facts,栄養成分表,영양 성분,
 product.notFound,找不到此商品,Product not found,商品が見つかりません,상품을 찾을 수 없습니다,
-product.backToList,回到商品列表,Back to products,商品リストに戻る,상품 목록으로,
+product.backToList,回到商品列表,Back to products,商品一覧に戻る,상품 목록으로,
 product.soy-milk.name,豆之間 | 國產豆漿,Soybean Space | Domestic Soy Milk,豆の間 | 国産豆乳,콩사이 | 국산 두유,商品名稱
 product.soy-milk.description,"【池農國產豆漿冷凍宅配】
 豆漿經過冷凍後解凍
@@ -41,14 +41,14 @@ Please heat before drinking.","【冷凍宅配】
 유수 분리가 나타나지만
 불량이 아닙니다!
 가열 후 드세요.",商品描述
-product.tofu-skin.name,豆之間 | 國產豆包,Soybean Space | Tofu Skin,豆の間 | 国産湯葉,콩사이 | 국산 두부피,
-product.dried-tofu.name,豆之間 | 國產鹽滷豆干,Soybean Space | Salt-brine Dried Tofu,豆の間 | 国産塩にがり豆腐干,콩사이 | 국산 소금 간수 두부간,
-product.black-dried-tofu.name,豆之間 | 秘緻豆干,Soybean Space | Secret Dried Tofu,豆の間 | 秘伝豆腐干,콩사이 | 비밀 두부간,
-product.soy-bun.name,手作米饅頭 | 豆漿口味,Rice Bun | Soy Milk Flavor,手作り米まんじゅう | 豆乳味,수제 쌀만두 | 두유맛,
-product.red-bean-bun.name,手作米饅頭 | 紅豆口味,Rice Bun | Red Bean Flavor,手作り米まんじゅう | 小豆味,수제 쌀만두 | 팥맛,
-product.pumpkin-bun.name,手作米饅頭 | 南瓜口味,Rice Bun | Pumpkin Flavor,手作り米まんじゅう | カボチャ味,수제 쌀만두 | 호박맛,
-product.brown-sugar-bun.name,手作米饅頭 | 黑糖口味,Rice Bun | Brown Sugar Flavor,手作り米まんじゅう | 黒糖味,수제 쌀만두 | 흑설탕맛,
-product.pepper-cookie.name,池上米餅 | 椒鹽口味,Chishang Rice Cracker | Pepper Salt,池上米菓子 | 胡椒塩味,지상 쌀과자 | 후추소금맛,
-product.curry-cookie.name,池上米餅 | 咖哩薑黃風味,Chishang Rice Cracker | Curry Turmeric,池上米菓子 | カレーターメリック味,지상 쌀과자 | 카레강황맛,
-product.quinoa-cookie.name,池上米餅 | 紅藜口味,Chishang Rice Cracker | Red Quinoa,池上米菓子 | 赤キヌア味,지상 쌀과자 | 붉은 퀴노아맛,
-product.cheese-cookie.name,池上米餅 | 起司口味,Chishang Rice Cracker | Cheese,池上米菓子 | チーズ味,지상 쌀과자 | 치즈맛,
+product.tofu-skin.name,豆之間 | 國產豆包,Soybean Space | Tofu Skin,豆の間 | 国産豆皮,콩사이 | 국산 두부피,
+product.dried-tofu.name,豆之間 | 國產鹽滷豆干,Soybean Space | Salt-brine Dried Tofu,豆の間 | 塩滷豆腐干,콩사이 | 소금간수 건두부,
+product.black-dried-tofu.name,豆之間 | 秘緻豆干,Soybean Space | Secret Dried Tofu,豆の間 | 秘伝豆腐干,콩사이 | 비밀 건두부,
+product.soy-bun.name,手作米饅頭 | 豆漿口味,Rice Bun | Soy Milk Flavor,手作り米饅頭 | 豆乳味,수제 쌀만두 | 두유맛,
+product.red-bean-bun.name,手作米饅頭 | 紅豆口味,Rice Bun | Red Bean Flavor,手作り米饅頭 | あずき味,수제 쌀만두 | 팥맛,
+product.pumpkin-bun.name,手作米饅頭 | 南瓜口味,Rice Bun | Pumpkin Flavor,手作り米饅頭 | かぼちゃ味,수제 쌀만두 | 호박맛,
+product.brown-sugar-bun.name,手作米饅頭 | 黑糖口味,Rice Bun | Brown Sugar Flavor,手作り米饅頭 | 黒糖味,수제 쌀만두 | 흑설탕맛,
+product.pepper-cookie.name,池上米餅 | 椒鹽口味,Chishang Rice Cracker | Pepper Salt,池上米せんべい | 椒塩味,츠상 쌀과자 | 소금후추맛,
+product.curry-cookie.name,池上米餅 | 咖哩薑黃風味,Chishang Rice Cracker | Curry Turmeric,池上米せんべい | カレーターメリック味,츠상 쌀과자 | 카레강황맛,
+product.quinoa-cookie.name,池上米餅 | 紅藜口味,Chishang Rice Cracker | Red Quinoa,池上米せんべい | 紅キヌア味,츠상 쌀과자 | 레드퀴노아맛,
+product.cheese-cookie.name,池上米餅 | 起司口味,Chishang Rice Cracker | Cheese,池上米せんべい | チーズ味,츠상 쌀과자 | 치즈맛,

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -16,7 +19,7 @@
 
       <!-- Info -->
       <div class="flex-1 px-6 py-8 lg:px-12">
-        <h2 class="mb-8 text-2xl font-bold">交通資訊</h2>
+        <h2 class="mb-8 text-2xl font-bold">{{ t('map.title') }}</h2>
 
         <div class="space-y-8">
           <!-- Store Info -->
@@ -29,9 +32,9 @@
               />
             </div>
             <div class="text-sm leading-relaxed text-gray-700">
-              <p>電話:089-862050</p>
-              <p>地址:台東縣池上鄉中山路通水巷12號</p>
-              <p>Open_Mon.-Fri.08:00-17:00</p>
+              <p>{{ t('map.phone') }}</p>
+              <p>{{ t('map.address') }}</p>
+              <p>{{ t('map.hours') }}</p>
             </div>
           </div>
 
@@ -45,9 +48,9 @@
               />
             </div>
             <div class="text-sm leading-relaxed text-gray-700">
-              <p>轉乘方式:</p>
-              <p>搭乘火車到達池上火車站後往</p>
-              <p>池上市區方向徒步3分鐘路程。</p>
+              <p>{{ t('map.transport') }}</p>
+              <p>{{ t('map.transportDesc1') }}</p>
+              <p>{{ t('map.transportDesc2') }}</p>
             </div>
           </div>
         </div>

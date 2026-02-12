@@ -15,5 +15,155 @@ common.salePrice,特價,Sale,セール,할인가,
 common.loading,載入商品中...,Loading...,読み込み中...,로딩 중...,
 common.backToTop,飛上去,Top,トップへ,위로,返回頂部按鈕
 common.backToHome,回到首頁,Back to Home,ホームへ,홈으로,
-common.inquiry,洽詢,Inquiry,問い合わせ,문의,
+common.inquiry,洽詢,Inquiry,お問い合わせ,문의,
 common.cart,購物車,Cart,カート,장바구니,
+home.shopButton,線上購買,Shop Online,オンラインショップ,온라인 쇼핑,首頁-線上購買按鈕
+home.artButton,線上探索,Explore,探索する,탐색하기,首頁-探索按鈕
+home.menuButton,豆間菜單,Bean Menu,メニュー,메뉴,首頁-菜單按鈕
+home.mapButton,尋找豆間,Find Us,アクセス,찾아오기,首頁-地圖按鈕
+shop.categoryTitle,商品類別,Categories,カテゴリー,카테고리,商店-分類標題
+cart.title,商品確認,Cart Confirmation,カート確認,장바구니 확인,購物車-標題
+cart.headerProduct,商品/單價,Product / Price,商品/単価,상품/단가,購物車-表頭
+cart.headerQuantity,數量,Qty,数量,수량,購物車-表頭
+cart.headerTotal,總計,Total,合計,합계,購物車-表頭
+cart.headerDelete,刪除,Delete,削除,삭제,購物車-表頭
+cart.empty,購物車是空的,Your cart is empty,カートは空です,장바구니가 비어있습니다,購物車-空狀態
+cart.goShopping,前往購物,Go Shopping,買い物に行く,쇼핑하러 가기,購物車-按鈕
+cart.domesticDelivery,本島宅配,Domestic Delivery,国内配送,국내 배송,購物車-配送方式
+cart.shippingByTotal,依總金額而訂,Based on order total,注文金額により異なる,주문 금액에 따라,購物車-運費說明
+cart.remark1,"2022 新年限定禮盒「虎虎生風」供貨日期：12/21-2022/2/28",2022 New Year Gift Box available: 12/21-2022/2/28,2022年新年限定ギフトボックス：12/21-2022/2/28,2022 새해 한정 선물 세트: 12/21-2022/2/28,購物車-備註1
+cart.remark2,"如欲門市取貨，請來電門市預訂 089-862050","For store pickup, please call 089-862050",店頭受取をご希望の場合は089-862050までお電話ください,매장 수령을 원하시면 089-862050으로 전화해 주세요,購物車-備註2
+cart.remark3,"若有節慶送禮需求，建議提前1-2天收貨！","For holiday gifts, we recommend receiving 1-2 days early!",贈答品の場合は1-2日前の受取をお勧めします,명절 선물의 경우 1-2일 전 수령을 권장합니다,購物車-備註3
+cart.remark4,"官網訂購至門市取貨之訂單，因尚未付清款項，取貨時仍需依現場排隊結帳。",Online orders for store pickup require on-site payment upon collection.,オンライン注文の店頭受取は現場でのお支払いが必要です,온라인 주문 매장 수령 시 현장 결제가 필요합니다,購物車-備註4
+cart.subtotal,小計,Subtotal,小計,소계,購物車-小計
+cart.discount,優惠折抵,Discount,割引,할인,購物車-折扣
+cart.shipping,運費,Shipping,送料,배송비,購物車-運費
+cart.total,總計,Total,合計,합계,購物車-總計
+cart.continueShopping,繼續購買,Continue Shopping,買い物を続ける,쇼핑 계속하기,購物車-按鈕
+cart.nextStep,下一步,Next Step,次へ,다음 단계,購物車-按鈕
+checkout.title,填寫訂購資訊,Order Information,注文情報の入力,주문 정보 입력,結帳-標題
+checkout.subtitle,"請填寫以下收件資訊，確認後送出訂單","Please fill in your delivery details and confirm your order","配送先情報を入力し、注文を確認してください",배송 정보를 입력하고 주문을 확인해 주세요,結帳-副標題
+checkout.orderSummary,訂單摘要,Order Summary,注文概要,주문 요약,結帳-訂單摘要
+checkout.recipientInfo,收件人資訊,Recipient Information,受取人情報,수령인 정보,結帳-收件人資訊
+checkout.name,收件人姓名,Recipient Name,受取人名,수령인 이름,結帳-姓名
+checkout.namePlaceholder,請輸入姓名,Enter your name,お名前を入力,이름을 입력하세요,結帳-姓名提示
+checkout.phone,連絡電話,Phone,電話番号,연락처,結帳-電話
+checkout.phonePlaceholder,例：0912345678,e.g. 0912345678,例：0912345678,예: 0912345678,結帳-電話提示
+checkout.email,電子郵件,Email,メール,이메일,結帳-電子郵件
+checkout.deliverySection,配送方式,Delivery,配送方法,배송 방법,結帳-配送區塊
+checkout.deliveryMethod,配送方式,Delivery Method,配送方法,배송 방법,結帳-配送方式
+checkout.domesticDelivery,本島宅配,Home Delivery,宅配便,택배,結帳-宅配
+checkout.storePickup,門市取貨,Store Pickup,店頭受取,매장 수령,結帳-門市取貨
+checkout.address,收件地址,Delivery Address,配送先住所,배송 주소,結帳-地址
+checkout.districtPlaceholder,區/鄉/鎮,District,区/町/村,구/읍/면,結帳-區域提示
+checkout.addressPlaceholder,請輸入詳細地址,Enter full address,詳細住所を入力,상세 주소를 입력하세요,結帳-地址提示
+checkout.paymentSection,付款方式,Payment,お支払い方法,결제 방법,結帳-付款區塊
+checkout.paymentMethod,付款方式,Payment Method,お支払い方法,결제 방법,結帳-付款方式
+checkout.cod,貨到付款,Cash on Delivery,代金引換,착불,結帳-貨到付款
+checkout.bankTransfer,轉帳匯款,Bank Transfer,銀行振込,계좌이체,結帳-轉帳
+checkout.notes,備註,Notes,備考,비고,結帳-備註
+checkout.notesPlaceholder,如有特殊需求請填寫,Any special requests,ご要望があればご記入ください,특별한 요청사항이 있으면 입력하세요,結帳-備註提示
+checkout.backToCart,返回購物車,Back to Cart,カートに戻る,장바구니로 돌아가기,結帳-返回按鈕
+checkout.submit,確認送出,Place Order,注文を確定する,주문 확인,結帳-送出按鈕
+checkout.submitting,送出中...,Submitting...,送信中...,제출 중...,結帳-送出中
+checkout.cityTaitung,台東縣,Taitung County,台東県,타이둥현,結帳-城市
+checkout.cityTaipei,台北市,Taipei City,台北市,타이베이시,結帳-城市
+checkout.cityNewTaipei,新北市,New Taipei City,新北市,신베이시,結帳-城市
+checkout.cityTaoyuan,桃園市,Taoyuan City,桃園市,타오위안시,結帳-城市
+checkout.cityTaichung,台中市,Taichung City,台中市,타이중시,結帳-城市
+checkout.cityTainan,台南市,Tainan City,台南市,타이난시,結帳-城市
+checkout.cityKaohsiung,高雄市,Kaohsiung City,高雄市,가오슝시,結帳-城市
+checkout.cityOther,其他,Other,その他,기타,結帳-城市
+auth.register,註冊帳號,Create Account,アカウント登録,회원가입,認證-註冊
+auth.login,會員登入,Member Login,会員ログイン,회원 로그인,認證-登入
+auth.googleLogin,使用 Google 帳號登入,Sign in with Google,Googleでログイン,Google로 로그인,認證-Google登入
+auth.orEmail,或使用電子郵件,or use email,またはメールで,또는 이메일로,認證-或使用郵件
+auth.name,姓名,Name,氏名,이름,認證-姓名
+auth.namePlaceholder,請輸入姓名,Enter your name,お名前を入力,이름을 입력하세요,認證-姓名提示
+auth.email,電子郵件,Email,メール,이메일,認證-郵件
+auth.emailPlaceholder,請輸入電子郵件,Enter your email,メールアドレスを入力,이메일을 입력하세요,認證-郵件提示
+auth.password,密碼,Password,パスワード,비밀번호,認證-密碼
+auth.passwordPlaceholder,請輸入密碼（至少6個字元）,Enter password (min. 6 characters),パスワードを入力（6文字以上）,비밀번호 입력 (6자 이상),認證-密碼提示
+auth.processing,處理中...,Processing...,処理中...,처리 중...,認證-處理中
+auth.registerBtn,註冊,Register,登録,가입,認證-註冊按鈕
+auth.loginBtn,登入,Login,ログイン,로그인,認證-登入按鈕
+auth.hasAccount,已有帳號？,Already have an account?,アカウントをお持ちですか？,계정이 있으신가요?,認證-已有帳號
+auth.noAccount,還沒有帳號？,Don't have an account?,アカウントをお持ちでない方,계정이 없으신가요?,認證-無帳號
+auth.loginLink,登入,Login,ログイン,로그인,認證-登入連結
+auth.registerLink,免費註冊,Register for free,無料登録,무료 가입,認證-註冊連結
+auth.logout,登出,Logout,ログアウト,로그아웃,認證-登出
+auth.loginRegister,登入 / 註冊,Login / Register,ログイン / 登録,로그인 / 가입,認證-登入/註冊
+inquiry.slogan,It is wiser to find out than to suppose.,It is wiser to find out than to suppose.,It is wiser to find out than to suppose.,It is wiser to find out than to suppose.,洽詢-標語
+inquiry.title,企業大宗詢問,Corporate Inquiry,法人お問い合わせ,기업 대량 문의,洽詢-標題
+inquiry.desc1,"你也對豆間產品充滿好奇，想知道還有哪些可能？",Curious about our products and what's possible?,豆の間の商品に興味がありますか？,콩사이 제품에 관심이 있으신가요?,洽詢-描述1
+inquiry.desc2,"來吧！填妥這份豆豆VIP表格，我們一起發掘更多滋味驚喜",Fill out this VIP form and let's discover more flavors together!,"VIPフォームにご記入いただき、新しい味わいを発見しましょう！",VIP 양식을 작성하시고 더 많은 맛을 발견해 보세요!,洽詢-描述2
+inquiry.desc3,"豆間產品訂購滿NT.5,000以上即享95折優惠","Orders over NT$5,000 enjoy 5% off","NT$5,000以上のご注文で5%割引","NT$5,000 이상 주문 시 5% 할인",洽詢-描述3
+inquiry.desc4,"更多合作詢問，歡迎於營業時間來電 089-862050","For more inquiries, call us during business hours: 089-862050",お問い合わせは営業時間内にお電話ください：089-862050,"문의 사항은 영업시간 내 전화해 주세요: 089-862050",洽詢-描述4
+inquiry.purpose,詢問項目,Inquiry Type,お問い合わせ内容,문의 항목,洽詢-項目
+inquiry.purposeGift,公司贈禮,Corporate Gift,法人ギフト,기업 선물,洽詢-公司贈禮
+inquiry.purposeCollab,品牌合作,Brand Collaboration,ブランドコラボ,브랜드 협업,洽詢-品牌合作
+inquiry.purposeHoliday,節慶贈禮,Holiday Gift,季節のギフト,명절 선물,洽詢-節慶贈禮
+inquiry.company,公司名稱,Company Name,会社名,회사명,洽詢-公司名稱
+inquiry.contact,聯絡人,Contact Person,担当者名,담당자,洽詢-聯絡人
+inquiry.mobile,手機號碼,Mobile Phone,携帯電話,휴대전화,洽詢-手機
+inquiry.companyTel,公司電話(分機),Company Phone (Ext.),会社電話(内線),회사 전화(내선),洽詢-公司電話
+inquiry.email,電子郵件,Email,メール,이메일,洽詢-郵件
+inquiry.contactTime,方便聯繫時間,Preferred Contact Time,連絡希望時間帯,희망 연락 시간,洽詢-聯繫時間
+inquiry.time1,下午 13:00-15:00,PM 13:00-15:00,午後 13:00-15:00,오후 13:00-15:00,洽詢-時間1
+inquiry.time2,下午 15:00-17:00,PM 15:00-17:00,午後 15:00-17:00,오후 15:00-17:00,洽詢-時間2
+inquiry.time3,晚上 17:00-20:00,Evening 17:00-20:00,夕方 17:00-20:00,저녁 17:00-20:00,洽詢-時間3
+inquiry.product,需求產品,Product Needed,必要な商品,필요 상품,洽詢-產品
+inquiry.productSoyMilk,豆之間豆漿,Soy Milk,豆の間豆乳,콩사이 두유,洽詢-豆漿
+inquiry.productTofuSkin,豆之間豆包,Tofu Skin,豆の間豆皮,콩사이 두부피,洽詢-豆包
+inquiry.productDriedTofu,豆之間豆干,Dried Tofu,豆の間豆腐干,콩사이 건두부,洽詢-豆干
+inquiry.quantity,需求個數,Quantity,数量,필요 수량,洽詢-數量
+inquiry.qty1,10-20(個),10-20 pcs,10-20個,10-20개,洽詢-數量1
+inquiry.qty2,20-30(個),20-30 pcs,20-30個,20-30개,洽詢-數量2
+inquiry.qty3,30-40(個),30-40 pcs,30-40個,30-40개,洽詢-數量3
+inquiry.qty4,40個以上,40+ pcs,40個以上,40개 이상,洽詢-數量4
+inquiry.date,需求日期,Required Date,必要日,필요 날짜,洽詢-日期
+inquiry.source,如何得知豆之間,How did you hear about us?,豆の間を知ったきっかけ,콩사이를 알게 된 경로,洽詢-來源
+inquiry.sourceFB,FACEBOOK,Facebook,Facebook,Facebook,洽詢-來源FB
+inquiry.sourceIG,Instagram,Instagram,Instagram,Instagram,洽詢-來源IG
+inquiry.sourceBlog,部落格介紹,Blog,ブログ,블로그,洽詢-來源部落格
+inquiry.sourceMedia,報章雜誌,Magazine / Newspaper,新聞・雑誌,신문/잡지,洽詢-來源媒體
+inquiry.submit,確定送出,Submit,送信する,제출,洽詢-送出
+inquiry.submitting,送出中...,Submitting...,送信中...,제출 중...,洽詢-送出中
+orderSuccess.title,Thank you for your order!,Thank you for your order!,Thank you for your order!,Thank you for your order!,訂單成功-標題
+orderSuccess.line1,感謝您的訂購,Thank you for your purchase,ご注文ありがとうございます,주문해 주셔서 감사합니다,訂單成功-第1行
+orderSuccess.line2,我們已收到您的訂單,We have received your order,ご注文を受け付けました,주문이 접수되었습니다,訂單成功-第2行
+orderSuccess.line3,訂單確認後,Once confirmed,注文確認後,주문 확인 후,訂單成功-第3行
+orderSuccess.line4,將依序為您安排出貨,We will arrange shipment in order,順次発送いたします,순차적으로 배송해 드리겠습니다,訂單成功-第4行
+orderSuccess.line5,届時會以電話或簡訊通知您,You will be notified by phone or text,電話またはSMSでお知らせします,전화 또는 문자로 안내드리겠습니다,訂單成功-第5行
+orderSuccess.line6,請留意來電訊息,Please watch for our call,ご連絡にご注意ください,연락에 유의해 주세요,訂單成功-第6行
+orderSuccess.line7,如有任何問題,If you have any questions,ご質問がございましたら,문의 사항이 있으시면,訂單成功-第7行
+orderSuccess.line8,歡迎於營業時間來電 089-862050,Please call during business hours: 089-862050,営業時間内にお電話ください：089-862050,영업시간 내 전화해 주세요: 089-862050,訂單成功-第8行
+inquirySuccess.title,All we want is a TASTE!,All we want is a TASTE!,All we want is a TASTE!,All we want is a TASTE!,洽詢成功-標題
+inquirySuccess.line1,謝謝您選擇豆之間,Thank you for choosing Soybean Space,豆の間をお選びいただきありがとうございます,콩사이를 선택해 주셔서 감사합니다,洽詢成功-第1行
+inquirySuccess.line2,我們期待不同合作,We look forward to collaborations,様々なコラボレーションを楽しみにしています,다양한 협업을 기대합니다,洽詢成功-第2行
+inquirySuccess.line3,激盪出更多有趣的靈感火花,Sparking more creative inspirations,より多くの創造的なインスピレーションを,더 많은 창의적인 영감을 함께,洽詢成功-第3行
+inquirySuccess.line4,資料送出後,After submission,データ送信後,자료 제출 후,洽詢成功-第4行
+inquirySuccess.line5,專員將依序與您電話確認,Our team will contact you by phone,担当者が順次お電話で確認いたします,담당자가 순차적으로 전화 확인드립니다,洽詢成功-第5行
+inquirySuccess.line6,近日別忘了留意來電,Please watch for our call soon,近日中のご連絡にご注意ください,곧 연락이 갈 예정이니 유의해 주세요,洽詢成功-第6行
+inquirySuccess.line7,期待認識美好品味的你,We look forward to meeting you,素敵な出会いを楽しみにしています,좋은 만남을 기대합니다,洽詢成功-第7行
+map.title,交通資訊,Transportation,アクセス情報,오시는 길,地圖-標題
+map.phone,電話:089-862050,Phone: 089-862050,電話：089-862050,전화: 089-862050,地圖-電話
+map.address,"地址:台東縣池上鄉中山路通水巷12號","Address: No. 12, Tongshui Ln., Zhongshan Rd., Chishang Township, Taitung County",住所：台東県池上郷中山路通水巷12号,주소: 타이둥현 츠상향 중산로 통수항 12호,地圖-地址
+map.hours,Open_Mon.-Fri.08:00-17:00,Open Mon.-Fri. 08:00-17:00,営業時間：月-金 08:00-17:00,영업시간: 월-금 08:00-17:00,地圖-營業時間
+map.transport,轉乘方式:,How to get here:,アクセス方法：,오시는 방법:,地圖-交通方式
+map.transportDesc1,搭乘火車到達池上火車站後往,"Take the train to Chishang Station,","電車で池上駅に到着後、","기차로 츠상역에 도착 후,",地圖-交通描述1
+map.transportDesc2,池上市區方向徒步3分鐘路程。,then walk 3 minutes toward the town center.,池上市街方面へ徒歩3分。,츠상 시내 방향으로 도보 3분.,地圖-交通描述2
+footer.address,台東縣池上鄉中山路通水巷12號,"No. 12, Tongshui Ln., Zhongshan Rd., Chishang Township, Taitung County",台東県池上郷中山路通水巷12号,타이둥현 츠상향 중산로 통수항 12호,頁尾-地址
+footer.disclaimer,"本網站為緯育TibaMe前端設計工程師班第74期學員專題作品，本平台僅供學習、展示之用。參考資源:豆之間、池上鄉農會、葉海地老師作品、部落客不羈、龜記、.but。","This website is a student project by TibaMe Front-End Design Engineering Class 74. For learning and demonstration purposes only. References: Soybean Space, Chishang Farmers' Association, Heidi Yip, and others.",本ウェブサイトはTibaMe フロントエンドデザインエンジニアリングクラス74期の学生プロジェクトです。学習・展示目的のみ。,본 웹사이트는 TibaMe 프론트엔드 디자인 엔지니어링 74기 학생 프로젝트입니다. 학습 및 전시 목적으로만 사용됩니다.,頁尾-免責聲明
+route.home,豆之間 Soybean Space,Soybean Space,豆の間,콩사이,路由-首頁
+route.shop,線上購買,Shop Online,オンラインショップ,온라인 쇼핑,路由-線上購買
+route.product,商品詳情,Product Details,商品詳細,상품 상세,路由-商品詳情
+route.art,線上探索豆間,Bean Art Present,アート展示,아트 프레젠트,路由-藝術展示
+route.menu,豆間菜單,Bean Menu,メニュー,메뉴,路由-菜單
+route.map,尋找豆間,Find Us,アクセス,오시는 길,路由-地圖
+route.cart,購物車,Cart,カート,장바구니,路由-購物車
+route.checkout,填寫訂購資訊,Checkout,注文情報入力,주문 정보,路由-結帳
+route.checkoutSuccess,訂購完成,Order Complete,注文完了,주문 완료,路由-訂購完成
+route.login,登入 / 註冊,Login / Register,ログイン / 登録,로그인 / 가입,路由-登入
+route.inquiry,企業大宗詢問,Corporate Inquiry,法人お問い合わせ,기업 문의,路由-洽詢
+route.inquirySuccess,表單送出,Inquiry Submitted,送信完了,제출 완료,路由-洽詢成功

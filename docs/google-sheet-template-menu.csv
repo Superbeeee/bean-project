@@ -1,25 +1,25 @@
 key,tw,en,jp,ko,notes
 menu.pageTitle,餐廳菜單,Restaurant Menu,レストランメニュー,레스토랑 메뉴,菜單頁面標題
 menu.menuLanguage,Menu Language,Menu Language,Menu Language,Menu Language,語言選擇標籤
-menu.signature.title,喫招牌,Signature,看板メニュー,시그니처,招牌菜單區塊標題
-menu.signature.a1,豆漿+米饅頭,Soy Milk and Rice Bun set,豆乳と米まんじゅうセット,두유 + 쌀만두 세트,
-menu.signature.a2,傳統豆花,Soybean Pudding,伝統豆花,전통 두화,
-menu.signature.a3,豆漿豆花,Soybean Pudding add Soy,豆乳豆花,두유 두화,
-menu.signature.a4,傳統古早味剉冰,Traditional Shaved Ice,伝統かき氷,전통 빙수,
-menu.signature.a5,香煎豆包,Pan-fried Tofu Skin,焼き湯葉,팬프라이 두부피,
+menu.signature.title,喫招牌,Signature,喫招牌,시그니처,招牌菜單區塊標題
+menu.signature.a1,豆漿+米饅頭,Soy Milk and Rice Bun set,豆乳と米風味の蒸し饅頭,두유+쌀만두 세트,
+menu.signature.a2,傳統豆花,Soybean Pudding,豆花 (トオファ ),전통 두화,
+menu.signature.a3,豆漿豆花,Soybean Pudding add Soy,豆乳と豆花,두유 두화,
+menu.signature.a4,傳統古早味剉冰,Traditional Shaved Ice,台湾風かき氷,전통 빙수,
+menu.signature.a5,香煎豆包,Pan-fried Tofu Skin,豆腐皮,팬프라이 두부피,
 menu.signature.a6,湯葉豆包,Yuba,湯葉,유바,
-menu.main.title,食好食,Main Dishes,メインディッシュ,메인 요리,主餐區塊標題
-menu.main.b1,麻油豆包米麵線,Sesame Oil Rice Noodles,ごま油米麺,참기름 쌀국수,
-menu.main.b2,泡菜海鮮烏龍麵,Kimchi Udon with Seafood,キムチシーフードうどん,김치 해물 우동,
-menu.main.b3,乾拌麵,Dry Noodles,和え麺,비빔면,
-menu.main.b4,蔬菜豆包捲,Vegetable Tofu Skin Roll,野菜湯葉巻き,야채 두부피 롤,
-menu.main.b5,起司豆包捲,Cheese Tofu Skin Roll,チーズ湯葉巻き,치즈 두부피 롤,
-menu.main.b6,培根豆包捲,Bacon Tofu Skin Roll,ベーコン湯葉巻き,베이컨 두부피 롤,
-menu.main.b7,豆包蔥油餅,Scallion Pancake with Tofu Skin,湯葉ネギパンケーキ,두부피 파전,
-menu.main.b8,炸豆腐,Fried Tofu,揚げ豆腐,튀김 두부,
-menu.set.title,食套餐,Set Meals,セットメニュー,세트 메뉴,套餐區塊標題
-menu.set.c1,三杯猴頭菇套餐,Three-Cup Lion's Mane Mushroom,三杯きのこセット,삼배 버섯 세트,
-menu.set.c2,猴頭菇金針豆包套餐,Lion's Mane and Enoki Mushroom,きのこエノキセット,버섯 팽이버섯 세트,
-menu.set.c3,香煎鯖魚飯套餐,Pan-Fried Mackerel Set,焼き鯖定食,팬프라이 고등어 세트,
-menu.set.c4,德國豬腳套餐,German Pork Knuckle Set,ドイツ豚足セット,독일식 돼지족발 세트,
-menu.set.c5,今日特餐,Today's Special,本日のスペシャル,오늘의 스페셜,
+menu.main.title,食好食,Main Dishes,食好食,메인 요리,主餐區塊標題
+menu.main.b1,麻油豆包米麵線,Sesame Oil Rice Noodles,ごま油豆ラップライスヌードル,참기름 두부피 쌀국수,
+menu.main.b2,泡菜海鮮烏龍麵,Kimchi Udon with Seafood,キムチシーフードうどん,김치 해산물 우동,
+menu.main.b3,乾拌麵,Dry Noodles,乾麺,비빔면,
+menu.main.b4,蔬菜豆包捲,Vegetable Tofu Skin Roll,野菜豆腐スキンロール,야채 두부피 롤,
+menu.main.b5,起司豆包捲,Cheese Tofu Skin Roll,チーズ豆腐スキンロール,치즈 두부피 롤,
+menu.main.b6,培根豆包捲,Bacon Tofu Skin Roll,ベーコン豆腐スキンロール,베이컨 두부피 롤,
+menu.main.b7,豆包蔥油餅,Scallion Pancake with Tofu Skin,豆腐の皮とネギのパンケーキ,파전 두부피,
+menu.main.b8,炸豆腐,Fried Tofu,揚げ出し豆腐,튀긴 두부,
+menu.set.title,食套餐,Set Meals,食套餐,세트 메뉴,套餐區塊標題
+menu.set.c1,三杯猴頭菇套餐,Three-Cup Lion's Mane Mushroom,サンベイ山伏茸 (ヤマブシタケ)定食,삼배 노루궁뎅이버섯 정식,
+menu.set.c2,猴頭菇金針豆包套餐,Lion's Mane and Enoki Mushroom,山伏茸(ヤマブシタケ) えのき茸豆皮定食,노루궁뎅이버섯 팽이 두부피 정식,
+menu.set.c3,香煎鯖魚飯套餐,Pan-Fried Mackerel Set,焼きサバ定食,구운 고등어 정식,
+menu.set.c4,德國豬腳套餐,German Pork Knuckle Set,ジャーマンポークナックルセット,독일식 족발 세트,
+menu.set.c5,今日特餐,Today's Special,本日のおすすめ,오늘의 특선,

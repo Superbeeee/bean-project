@@ -1,6 +1,6 @@
 key,tw,en,jp,ko,notes
 category.all,所有商品,All Products,すべての商品,모든 상품,分類-所有商品
-category.star,豆之間明星商品,Star Products,豆の間人気商品,인기 상품,分類-明星商品
-category.bean,豆之間產品,Bean Products,豆の間製品,콩 제품,分類-豆製品
-category.bun,豆之間米饅頭,Rice Buns,豆の間米まんじゅう,쌀만두,分類-米饅頭
-category.cookie,池上米餅,Rice Crackers,池上米菓子,쌀과자,分類-米餅
+category.star,豆之間明星商品,Star Products,人気商品,인기 상품,分類-明星商品
+category.bean,豆之間產品,Bean Products,豆製品,두부 제품,分類-豆製品
+category.bun,豆之間米饅頭,Rice Buns,米饅頭,쌀만두,分類-米饅頭
+category.cookie,池上米餅,Rice Crackers,米せんべい,쌀과자,分類-米餅

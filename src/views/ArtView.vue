@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const { t } = useI18n()
 const pageRef = ref<HTMLElement | null>(null)
 let ctx: gsap.Context | null = null
 
@@ -219,16 +221,14 @@ function scrollToTop() {
   <div ref="pageRef" class="overflow-x-hidden bg-dark text-white">
     <!-- ====== Logo Intro ====== -->
     <section class="mx-auto max-w-6xl px-4 pb-20 pt-[140px] text-center">
-      <p class="intro-text-top mb-8 text-base leading-relaxed lg:text-lg">
-        豆之間，早期傳統製作豆製品的場所，也就是台語的豆仔間。
+      <p class="intro-text-top mb-8 whitespace-pre-line text-base leading-relaxed lg:text-lg">
+        {{ t('art.intro') }}
       </p>
       <div class="intro-logo mx-auto mb-8 max-w-[300px]">
         <img src="/photo of ART/forartlogo.png" alt="豆之間 Logo" class="w-full" />
       </div>
-      <p class="intro-text-bottom text-sm leading-relaxed text-gray-300 lg:text-base">
-        | 池上豆之間 | 土地和農民之間的距離 | 農民和農會之間的關係 |
-        <br />
-        | 農會與消費者之間的關係 | 都是緊密的合作夥伴及超美好關係 |
+      <p class="intro-text-bottom whitespace-pre-line text-sm leading-relaxed text-gray-300 lg:text-base">
+        {{ t('art.subtitle') }}
       </p>
     </section>
 
@@ -242,8 +242,8 @@ function scrollToTop() {
       <div class="hero-overlay absolute inset-0 bg-black/50"></div>
       <div class="hero-caption absolute inset-0 flex items-center justify-center">
         <div class="text-center">
-          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">穀倉的機遇</h2>
-          <p class="text-xl text-primary lg:text-2xl">穀倉 <em>X</em> 視界</p>
+          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">{{ t('art.granary.title') }}</h2>
+          <p class="text-xl text-primary lg:text-2xl">{{ t('art.granary.subtitle') }}</p>
         </div>
       </div>
     </div>
@@ -251,27 +251,17 @@ function scrollToTop() {
     <!-- Section 1: Content -->
     <section class="content-block mx-auto max-w-3xl px-4 py-20 text-center">
       <div class="section-body">
-        <p class="mb-8 text-sm leading-relaxed text-gray-300">
-          駐存池上米的寶庫<br />
-          即是穀倉<br />
-          建築也許會被時間摧殘<br />
-          但農夫的勤奮光景<br />
-          可以在新視界被留下
+        <p class="mb-8 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.granary.poem') }}
         </p>
       </div>
 
       <div class="section-divider mx-auto mb-8 h-px w-24 origin-center bg-primary/40"></div>
 
       <div class="section-body">
-        <h3 class="mb-3 text-lg font-bold">場景介紹</h3>
-        <p class="mb-8 text-sm leading-relaxed text-gray-300">
-          豆之間是由池上農會將廢棄的穀倉改建而成，<br />
-          這裏保留傳統木造穀倉意象，<br />
-          注入大量採光，整個空間挑高而明亮，新穎中帶有一絲古早氣質。<br />
-          屋頂留有從前巨大碾米機的部分構造，<br />
-          建築、豆之間，融入了農舍老屋印記，<br />
-          在時代快速演進下不忘過去的光陰，<br />
-          是新的角度視界，亦是新的飲食穀倉。
+        <h3 class="mb-3 text-lg font-bold">{{ t('art.granary.sceneTitle') }}</h3>
+        <p class="mb-8 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.granary.scene') }}
         </p>
       </div>
 
@@ -279,14 +269,8 @@ function scrollToTop() {
         <div class="side-img lg:w-1/3">
           <img src="/photo of ART/house.png" alt="池上" class="rounded-lg" />
         </div>
-        <p class="side-text text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
-          池上的田，總是穩穩地舖滿在巍然屹立的中央山脈腳下，
-          一年之間，順應時序更換裝扮，時而澄澈如鏡、時而搖曳生姿、時而青綠鮮嫩、
-          又時而艷黃如陽，年復一年，在農民勤作耕耘下，餵養著池上人。
-          <br /><br />
-          一方水土養一方人，自日治時期開始，池上以農為生，得天獨厚的自然環境，
-          有著恰好日照、肥沃土壤，引來一群愛鄉愛土的樸實農人在此落地生根，
-          池上之所以美，除了廣袤的視野，還有凝聚著共好的心意。
+        <p class="side-text whitespace-pre-line text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
+          {{ t('art.granary.history') }}
         </p>
       </div>
     </section>
@@ -301,8 +285,8 @@ function scrollToTop() {
       <div class="hero-overlay absolute inset-0 bg-black/50"></div>
       <div class="hero-caption absolute inset-0 flex items-center justify-center">
         <div class="text-center">
-          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">溯土 Revert to Earth</h2>
-          <p class="text-xl text-primary lg:text-2xl">藝術 <em>X</em> 重現</p>
+          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">{{ t('art.revert.title') }}</h2>
+          <p class="text-xl text-primary lg:text-2xl">{{ t('art.revert.subtitle') }}</p>
         </div>
       </div>
     </div>
@@ -310,23 +294,18 @@ function scrollToTop() {
     <!-- Section 2: Content -->
     <section class="content-block mx-auto max-w-3xl px-4 py-20 text-center">
       <div class="section-body">
-        <p class="mb-2 text-sm leading-relaxed text-gray-300">
-          因雨而濕潤的泥土香味緩緩升起，<br /><br />
-          如同一首來自無聲庶民的讚歌。
+        <p class="mb-2 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.revert.poem') }}
         </p>
-        <p class="mb-8 text-xs text-gray-500">泰戈爾《漂鳥集》 第310首</p>
+        <p class="mb-8 text-xs text-gray-500">{{ t('art.revert.poemSource') }}</p>
       </div>
 
       <div class="section-divider mx-auto mb-8 h-px w-24 origin-center bg-primary/40"></div>
 
       <div class="section-body">
-        <h3 class="mb-3 text-lg font-bold">作品理念</h3>
-        <p class="mb-8 text-sm leading-relaxed text-gray-300">
-          重拾阿美族古老的製陶技法，並嘗試從傳統延伸至當代創作的可能。<br />
-          從挖土、曬乾、搗土、煉土到連夜不眠的野地野燒來製作陶片，透過身體力行向土地學習並保持連結。<br />
-          作品以麻線來懸掛數百件陶片，創造一個多層次的圓形空間，<br />
-          在木灰色的舊穀倉裡，像是一個時光隧道，更是一場人類對於土地無盡追溯的精神儀式。<br />
-          圓形，有象徵和諧、融為一體、圓滿之意。
+        <h3 class="mb-3 text-lg font-bold">{{ t('art.revert.conceptTitle') }}</h3>
+        <p class="mb-8 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.revert.concept') }}
         </p>
       </div>
 
@@ -334,14 +313,8 @@ function scrollToTop() {
         <div class="side-img lg:w-1/3">
           <img src="/photo of ART/artist.svg" alt="Artist" class="rounded-lg" />
         </div>
-        <p class="side-text text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
-          Aritst/海地·葉（Heidi Yip）<br />
-          於1978年在香港出生，<br />
-          畢業於多倫多安省藝術與設計學院之後，<br />
-          自己到墨西哥、西藏、戈壁、紐約等地旅行尋找創作靈感，<br />
-          最後到了台灣，<br />
-          一個被太平洋包圍的小島，<br />
-          激起她無限的創作熱情。
+        <p class="side-text whitespace-pre-line text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
+          {{ t('art.revert.artist') }}
         </p>
       </div>
     </section>
@@ -356,8 +329,8 @@ function scrollToTop() {
       <div class="hero-overlay absolute inset-0 bg-black/50"></div>
       <div class="hero-caption absolute inset-0 flex items-center justify-center">
         <div class="text-center">
-          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">豆之間 | 豆仔間</h2>
-          <p class="text-xl text-primary lg:text-2xl">時代 <em>X</em> 食現</p>
+          <h2 class="mb-4 text-4xl font-bold lg:text-6xl">{{ t('art.bean.title') }}</h2>
+          <p class="text-xl text-primary lg:text-2xl">{{ t('art.bean.subtitle') }}</p>
         </div>
       </div>
     </div>
@@ -365,26 +338,17 @@ function scrollToTop() {
     <!-- Section 3: Content -->
     <section class="content-block mx-auto max-w-3xl px-4 py-20 text-center">
       <div class="section-body">
-        <p class="mb-8 text-sm leading-relaxed text-gray-300">
-          豆仔間<br />
-          早期傳統製作豆製品的場所<br /><br />
-          豆之間<br />
-          一個將光陰與藝術<br />
-          一同實現的新食代
+        <p class="mb-8 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.bean.poem') }}
         </p>
       </div>
 
       <div class="section-divider mx-auto mb-8 h-px w-24 origin-center bg-primary/40"></div>
 
       <div class="section-body">
-        <h3 class="mb-3 text-lg font-bold">結合機緣</h3>
-        <p class="mb-8 text-sm leading-relaxed text-gray-300">
-          池上豆之間有著老穀倉歷史歲月的痕跡，也有藝術家眼中的池上，<br />
-          更有池上人對老穀倉懷念的味道，同時也看見老穀倉的新生。<br />
-          關於池上豆之間成立的契機，池上栽種約20公頃的黃豆，照顧小農<br />
-          解決銷售問題，支持本土國產雜糧，縮短食物哩程，<br />
-          池上米很優、池上的黃豆很香、池上的蔬果很鮮甜，<br />
-          池上的美好希望藉由【池上豆之間】 讓您看見不一樣的池上。
+        <h3 class="mb-3 text-lg font-bold">{{ t('art.bean.comboTitle') }}</h3>
+        <p class="mb-8 whitespace-pre-line text-sm leading-relaxed text-gray-300">
+          {{ t('art.bean.combo') }}
         </p>
       </div>
     </section>
@@ -435,7 +399,7 @@ function scrollToTop() {
       @click="scrollToTop"
     >
       <img src="/photo/uparrow.png" alt="上" class="w-5" />
-      <span class="text-xs">飛上去</span>
+      <span class="text-xs">{{ t('common.backToTop') }}</span>
     </button>
   </div>
 </template>
