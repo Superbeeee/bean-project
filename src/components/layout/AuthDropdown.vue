@@ -26,7 +26,7 @@ async function handleLogout() {
     <RouterLink
       v-if="!authStore.isLoggedIn"
       to="/login"
-      class="flex h-[30px] w-[30px] items-center justify-center rounded-full transition-transform duration-300 hover:scale-150"
+      class="flex h-[30px] w-[30px] items-center justify-center rounded-full transition-colors duration-300 hover:text-primary"
       :class="theme === 'white' ? 'text-white' : 'text-black'"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -37,7 +37,7 @@ async function handleLogout() {
     <!-- Logged in -->
     <template v-else>
       <button
-        class="flex h-[30px] w-[30px] items-center justify-center rounded-full transition-transform duration-300 hover:scale-110"
+        class="flex h-[30px] w-[30px] items-center justify-center rounded-full transition-colors duration-300 hover:text-primary"
         :class="theme === 'white' ? 'text-white' : 'text-black'"
         @click="dropdownOpen = !dropdownOpen"
       >

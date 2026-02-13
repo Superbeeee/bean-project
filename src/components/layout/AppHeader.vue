@@ -76,42 +76,62 @@ function toggleMenu() {
           <LanguageSwitcher />
         </li>
         <li>
-          <a href="#" target="_blank">
+          <a href="#" target="_blank" class="group relative inline-block h-[30px] w-[30px]">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-fb.svg' : '/photo/b-logo/b-fb.svg'"
               alt="Facebook"
-              class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
+              class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="/photo/p-logo/p-fb.svg"
+              alt=""
+              class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
           </a>
         </li>
         <li>
-          <a href="#" target="_blank">
+          <a href="#" target="_blank" class="group relative inline-block h-[30px] w-[30px]">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-ig.svg' : '/photo/b-logo/b-ig.svg'"
               alt="Instagram"
-              class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
+              class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="/photo/p-logo/p-ig.svg"
+              alt=""
+              class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
           </a>
         </li>
         <li>
-          <RouterLink to="/inquiry">
+          <RouterLink to="/inquiry" class="group relative inline-block h-[30px] w-[30px]">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-ask-logo.png' : '/photo/b-logo/b-ask.png'"
               :alt="t('common.inquiry')"
-              class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
+              class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="/photo/p-logo/p-ask.svg"
+              alt=""
+              class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/cart" class="relative">
+          <RouterLink to="/cart" class="group relative inline-block h-[30px] w-[30px]">
             <img
               :src="theme === 'white' ? '/photo/w-logo/w-cart.svg' : '/photo/b-logo/b-cart.svg'"
               :alt="t('common.cart')"
-              class="h-[30px] w-[30px] transition-transform duration-300 hover:scale-150"
+              class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <img
+              src="/photo/p-logo/p-cart.svg"
+              alt=""
+              class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
             <span
               v-if="cart.itemCount > 0"
-              class="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
+              class="absolute -right-2 -top-2 z-10 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
             >
               {{ cart.itemCount }}
             </span>
