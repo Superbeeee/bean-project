@@ -10,8 +10,8 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.use(pinia)
+app.use(i18n)    // 必須在 router 之前，router.beforeEach 才能正確呼叫 t()
 app.use(router)
-app.use(i18n)
 
 const authStore = useAuthStore()
 authStore.init().then(() => {

@@ -18,44 +18,59 @@ export const useAuthStore = defineStore('auth', () => {
 
   function init() {
     return new Promise<void>((resolve) => {
-      onAuthStateChanged(auth, async (firebaseUser) => {
+      onAuthStateChanged(auth, (firebaseUser) => {
+        // 記錄當下的 uid，用來判斷 Firestore 非同步作業完成前
+        // 若 onAuthStateChanged 再次觸發，結果是否已過時。
+        const uid = firebaseUser?.uid ?? null
+
         user.value = firebaseUser
+        if (!firebaseUser) profile.value = null
 
-        if (firebaseUser) {
-          try {
-            const profileRef = doc(db, 'users', firebaseUser.uid)
-            const profileSnap = await getDoc(profileRef)
+        const run = async () => {
+          if (firebaseUser && uid) {
+            try {
+              const profileRef = doc(db, 'users', uid)
+              const profileSnap = await getDoc(profileRef)
 
-            if (profileSnap.exists()) {
-              profile.value = profileSnap.data() as UserProfile
-            } else {
-              const newProfile: UserProfile = {
-                uid: firebaseUser.uid,
-                email: firebaseUser.email,
-                displayName: firebaseUser.displayName,
-                photoURL: firebaseUser.photoURL,
+              // 等待 Firestore 回應期間，登入狀態可能已改變（如登出或切換帳號）。
+              // 若使用者已變更，丟棄此次過時的結果，避免 user/profile 狀態不一致。
+              if (user.value?.uid !== uid) return
+
+              if (profileSnap.exists()) {
+                profile.value = profileSnap.data() as UserProfile
+              } else {
+                const newProfile: UserProfile = {
+                  uid: firebaseUser.uid,
+                  email: firebaseUser.email,
+                  displayName: firebaseUser.displayName,
+                  photoURL: firebaseUser.photoURL,
+                }
+                await setDoc(profileRef, newProfile)
+                if (user.value?.uid === uid) {
+                  profile.value = newProfile
+                }
               }
-              await setDoc(profileRef, newProfile)
-              profile.value = newProfile
-            }
-          } catch (e) {
-            console.warn('[auth] Failed to load/create user profile:', e)
-            profile.value = {
-              uid: firebaseUser.uid,
-              email: firebaseUser.email,
-              displayName: firebaseUser.displayName,
-              photoURL: firebaseUser.photoURL,
+            } catch (e) {
+              console.warn('[auth] Failed to load/create user profile:', e)
+              if (user.value?.uid === uid) {
+                profile.value = {
+                  uid: firebaseUser.uid,
+                  email: firebaseUser.email,
+                  displayName: firebaseUser.displayName,
+                  photoURL: firebaseUser.photoURL,
+                }
+              }
             }
           }
-        } else {
-          profile.value = null
+
+          loading.value = false
+          if (!initialized.value) {
+            initialized.value = true
+            resolve()
+          }
         }
 
-        loading.value = false
-        if (!initialized.value) {
-          initialized.value = true
-          resolve()
-        }
+        run()
       })
     })
   }
