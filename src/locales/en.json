@@ -84,7 +84,11 @@
     "cityTaichung": "Taichung City",
     "cityTainan": "Tainan City",
     "cityKaohsiung": "Kaohsiung City",
-    "cityOther": "Other"
+    "cityOther": "Other",
+    "errorName": "Please enter recipient name",
+    "errorPhone": "Invalid phone number. Must start with 09 and be 10 digits",
+    "errorDistrict": "Please enter district",
+    "errorAddress": "Please enter full address"
   },
   "auth": {
     "register": "Create Account",

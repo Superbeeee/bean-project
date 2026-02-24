@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, type FieldValue } from 'firebase/firestore'
 import { db } from '@/firebase'
 import type { Order, OrderItem } from '@/types'
 import type { CartItem } from '@/stores/cart'
@@ -44,7 +44,9 @@ export function useOrders() {
     error.value = null
 
     try {
-      const orderData: Omit<Order, 'id'> = {
+      // 寫入 Firestore 時 createdAt 必須是 FieldValue（serverTimestamp()），
+      // 讀回後才會是 Timestamp。兩者型別不同，用獨立的寫入型別避免 as any。
+      const orderData: Omit<Order, 'id' | 'createdAt'> & { createdAt: FieldValue } = {
         ...formData,
         delivery: formData.delivery as Order['delivery'],
         payment: formData.payment as Order['payment'],
@@ -55,7 +57,7 @@ export function useOrders() {
         total: totals.total,
         userId,
         status: 'pending',
-        createdAt: serverTimestamp() as any,
+        createdAt: serverTimestamp(),
       }
 
       const docRef = await addDoc(collection(db, 'orders'), orderData)

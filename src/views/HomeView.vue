@@ -8,7 +8,6 @@ const { t } = useI18n()
 const containerRef = ref<HTMLElement | null>(null)
 let isScrolling = false
 let currentSection = 0
-const totalSections = 5 // 4 hero + 1 footer
 
 function onVideoMounted(el: any) {
   if (el instanceof HTMLVideoElement) {
@@ -18,7 +17,8 @@ function onVideoMounted(el: any) {
 
 function scrollToSection(index: number) {
   if (!containerRef.value || isScrolling) return
-  const clamped = Math.max(0, Math.min(index, totalSections - 1))
+  // sections.length 個 hero + 1 個 footer，最大 index = sections.length
+  const clamped = Math.max(0, Math.min(index, sections.length))
   if (clamped === currentSection) return
 
   isScrolling = true

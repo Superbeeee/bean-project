@@ -3,12 +3,10 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 import { useFirebaseAuth } from '@/composables/useFirebaseAuth'
-import { useAuthStore } from '@/stores/auth'
 
 const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
-const authStore = useAuthStore()
 const { loading, error, loginWithEmail, registerWithEmail, loginWithGoogle } = useFirebaseAuth()
 
 const isRegister = ref(false)
@@ -17,6 +15,13 @@ const form = ref({
   email: '',
   password: '',
 })
+
+// 切換登入/註冊模式時清除錯誤訊息
+// 不能在 template inline handler 直接寫 error = null，
+// 因為 error 是 ref，必須改 error.value
+function clearError() {
+  error.value = null
+}
 
 function redirectAfterAuth() {
   const redirect = route.query.redirect as string
@@ -123,7 +128,7 @@ async function handleGoogle() {
         {{ isRegister ? t('auth.hasAccount') : t('auth.noAccount') }}
         <button
           class="text-primary hover:underline"
-          @click="isRegister = !isRegister; error = null"
+          @click="isRegister = !isRegister; clearError()"
         >
           {{ isRegister ? t('auth.loginLink') : t('auth.registerLink') }}
         </button>

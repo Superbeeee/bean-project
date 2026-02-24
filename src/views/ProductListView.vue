@@ -15,9 +15,8 @@ const filteredProducts = computed(() => {
   return products.value.filter((p) => p.category === activeCategory.value)
 })
 
-onMounted(() => {
-  fetchProducts()
-  fetchCategories()
+onMounted(async () => {
+  await Promise.all([fetchProducts(), fetchCategories()])
 })
 </script>
 

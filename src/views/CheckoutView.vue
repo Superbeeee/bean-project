@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
@@ -11,6 +11,36 @@ const router = useRouter()
 const cart = useCartStore()
 const authStore = useAuthStore()
 const { submitting, error: orderError, createOrder } = useOrders()
+
+const validationError = ref<string | null>(null)
+
+function validate(): boolean {
+  validationError.value = null
+
+  if (!form.name.trim()) {
+    validationError.value = t('checkout.errorName')
+    return false
+  }
+
+  const phone = form.phone.replace(/-/g, '')
+  if (!/^09\d{8}$/.test(phone)) {
+    validationError.value = t('checkout.errorPhone')
+    return false
+  }
+
+  if (form.delivery === '宅配') {
+    if (!form.district.trim()) {
+      validationError.value = t('checkout.errorDistrict')
+      return false
+    }
+    if (!form.address.trim()) {
+      validationError.value = t('checkout.errorAddress')
+      return false
+    }
+  }
+
+  return true
+}
 
 const form = reactive({
   name: '',
@@ -39,6 +69,8 @@ onMounted(() => {
 })
 
 async function handleSubmit() {
+  if (!validate()) return
+
   const orderId = await createOrder(
     form,
     cart.items,
@@ -207,7 +239,9 @@ async function handleSubmit() {
         ></textarea>
       </div>
 
-      <!-- Error -->
+      <!-- 前端驗證錯誤 -->
+      <p v-if="validationError" class="text-sm text-red-500">{{ validationError }}</p>
+      <!-- 送出失敗錯誤 -->
       <p v-if="orderError" class="text-sm text-red-500">{{ orderError }}</p>
 
       <!-- Buttons -->
