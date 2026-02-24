@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 
 export interface CartItem {
   id: string
@@ -25,9 +25,10 @@ export const useCartStore = defineStore('cart', () => {
   const items = ref<CartItem[]>(loadCartFromStorage())
   const shippingFee = ref(160)
 
-  watch(items, (newItems) => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(newItems))
-  }, { deep: true })
+  // 以明確呼叫取代 deep watch，避免每次巢狀屬性變動都觸發全量序列化
+  function persistCart() {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items.value))
+  }
 
   const subtotal = computed(() =>
     items.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -48,22 +49,29 @@ export const useCartStore = defineStore('cart', () => {
     } else {
       items.value.push({ ...product, quantity })
     }
+    persistCart()
   }
 
   function removeItem(id: string) {
     items.value = items.value.filter((item) => item.id !== id)
+    persistCart()
   }
 
   function updateQuantity(id: string, quantity: number) {
     const item = items.value.find((i) => i.id === id)
     if (item) {
       item.quantity = Math.max(0, quantity)
-      if (item.quantity === 0) removeItem(id)
+      if (item.quantity === 0) {
+        removeItem(id) // removeItem 內已呼叫 persistCart
+      } else {
+        persistCart()
+      }
     }
   }
 
   function clearCart() {
     items.value = []
+    persistCart()
   }
 
   return {

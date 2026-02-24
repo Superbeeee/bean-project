@@ -95,24 +95,32 @@ function onKeyDown(e: KeyboardEvent) {
   }
 }
 
+// 在 mount 時存下實際掛載的元素，確保 unmount 時清除的是同一個元素。
+// 不在 onUnmounted 重新讀 containerRef.value，因為 Vue 在 unmount
+// 過程中可能已先將 template ref 設為 null，導致 listeners 無法被移除。
+let mountedContainer: HTMLElement | null = null
+
 onMounted(() => {
-  const el = containerRef.value
-  if (el) {
-    el.addEventListener('wheel', onWheel, { passive: false })
-    el.addEventListener('touchstart', onTouchStart, { passive: true })
-    el.addEventListener('touchend', onTouchEnd, { passive: true })
+  mountedContainer = containerRef.value
+  if (mountedContainer) {
+    mountedContainer.addEventListener('wheel', onWheel, { passive: false })
+    mountedContainer.addEventListener('touchstart', onTouchStart, { passive: true })
+    mountedContainer.addEventListener('touchend', onTouchEnd, { passive: true })
   }
   window.addEventListener('keydown', onKeyDown)
 })
 
 onUnmounted(() => {
-  const el = containerRef.value
-  if (el) {
-    el.removeEventListener('wheel', onWheel)
-    el.removeEventListener('touchstart', onTouchStart)
-    el.removeEventListener('touchend', onTouchEnd)
+  if (mountedContainer) {
+    mountedContainer.removeEventListener('wheel', onWheel)
+    mountedContainer.removeEventListener('touchstart', onTouchStart)
+    mountedContainer.removeEventListener('touchend', onTouchEnd)
+    mountedContainer = null
   }
   window.removeEventListener('keydown', onKeyDown)
+  // 重置狀態，避免重新進入頁面時從上次離開的位置繼續
+  currentSection = 0
+  isScrolling = false
 })
 
 const sections = [

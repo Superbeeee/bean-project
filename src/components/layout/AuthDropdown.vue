@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onUnmounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth'
 import { useFirebaseAuth } from '@/composables/useFirebaseAuth'
@@ -13,6 +13,29 @@ const props = withDefaults(defineProps<{ theme?: string }>(), {
 const authStore = useAuthStore()
 const { logout } = useFirebaseAuth()
 const dropdownOpen = ref(false)
+const rootRef = ref<HTMLElement | null>(null)
+
+// 點到元件外部時關閉下拉選單。
+// 使用 nextTick 確保開啟當下的點擊事件冒泡完成後再掛上監聽器，
+// 避免同一次點擊立即又關閉選單。
+function onDocumentClick(e: MouseEvent) {
+  if (rootRef.value && !rootRef.value.contains(e.target as Node)) {
+    dropdownOpen.value = false
+  }
+}
+
+watch(dropdownOpen, async (isOpen) => {
+  if (isOpen) {
+    await nextTick()
+    document.addEventListener('click', onDocumentClick)
+  } else {
+    document.removeEventListener('click', onDocumentClick)
+  }
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', onDocumentClick)
+})
 
 async function handleLogout() {
   await logout()
@@ -21,7 +44,7 @@ async function handleLogout() {
 </script>
 
 <template>
-  <div class="relative">
+  <div ref="rootRef" class="relative">
     <!-- Not logged in -->
     <RouterLink
       v-if="!authStore.isLoggedIn"
@@ -65,12 +88,6 @@ async function handleLogout() {
         </div>
       </Transition>
 
-      <!-- Overlay to close dropdown -->
-      <div
-        v-if="dropdownOpen"
-        class="fixed inset-0 z-40"
-        @click="dropdownOpen = false"
-      ></div>
     </template>
   </div>
 </template>
