@@ -69,6 +69,11 @@ onMounted(() => {
 })
 
 async function handleSubmit() {
+  if (cart.items.length === 0) {
+    router.push('/cart')
+    return
+  }
+
   if (!validate()) return
 
   const orderId = await createOrder(
