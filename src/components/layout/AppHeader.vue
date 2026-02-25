@@ -24,7 +24,6 @@ function toggleMenu() {
   <!-- Desktop Header -->
   <header
     class="fixed top-0 z-40 flex w-full items-center justify-center transition-all duration-300"
-    :class="theme === 'white' ? '' : ''"
   >
     <div class="flex w-full max-w-7xl items-center justify-between px-5 lg:justify-center lg:gap-8">
       <!-- Logo -->
