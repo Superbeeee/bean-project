@@ -25,7 +25,8 @@ function clearError() {
 
 function redirectAfterAuth() {
   const redirect = route.query.redirect as string
-  router.push(redirect || '/')
+  if (redirect && redirect.startsWith('/')) router.push(redirect)
+  else router.push('/')
 }
 
 async function handleSubmit() {
