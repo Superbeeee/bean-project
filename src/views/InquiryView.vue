@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useInquiries } from '@/composables/useInquiries'
@@ -7,6 +7,8 @@ import { useInquiries } from '@/composables/useInquiries'
 const { t } = useI18n()
 const router = useRouter()
 const { submitting, error: inquiryError, createInquiry } = useInquiries()
+
+const validationError = ref<string | null>(null)
 
 const form = reactive({
   purpose: '公司贈禮',
@@ -22,7 +24,26 @@ const form = reactive({
   source: 'FACEBOOK',
 })
 
+function validate(): boolean {
+  validationError.value = null
+
+  if (!form.name.trim()) {
+    validationError.value = '請填寫聯絡人姓名'
+    return false
+  }
+
+  const phone = form.phone.replace(/-/g, '')
+  if (!/^09\d{8}$/.test(phone)) {
+    validationError.value = '請填寫正確的手機號碼（格式：09XXXXXXXX）'
+    return false
+  }
+
+  return true
+}
+
 async function handleSubmit() {
+  if (!validate()) return
+
   const success = await createInquiry(form)
   if (success) {
     router.push('/inquiry/success')
@@ -73,20 +94,23 @@ async function handleSubmit() {
 
       <!-- Contact Name -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contact') }}</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contact') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.name"
           type="text"
+          required
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         />
       </div>
 
       <!-- Phone -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.mobile') }}</label>
+        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.mobile') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.phone"
           type="text"
+          required
+          placeholder="09XXXXXXXX"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
         />
       </div>
@@ -178,7 +202,9 @@ async function handleSubmit() {
         </select>
       </div>
 
-      <!-- Error -->
+      <!-- 前端驗證錯誤 -->
+      <p v-if="validationError" class="text-center text-sm text-red-500">{{ validationError }}</p>
+      <!-- 送出失敗錯誤 -->
       <p v-if="inquiryError" class="text-center text-sm text-red-500">{{ inquiryError }}</p>
 
       <!-- Submit -->
