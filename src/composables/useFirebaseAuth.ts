@@ -7,6 +7,7 @@ import {
   updateProfile,
   type User,
 } from 'firebase/auth'
+import { FirebaseError } from 'firebase/app'
 import { auth } from '@/firebase'
 import { ref } from 'vue'
 
@@ -20,8 +21,8 @@ export function useFirebaseAuth() {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password)
       return result.user
-    } catch (e: any) {
-      error.value = mapAuthError(e.code)
+    } catch (e: unknown) {
+      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
       return null
     } finally {
       loading.value = false
@@ -39,8 +40,8 @@ export function useFirebaseAuth() {
       const result = await createUserWithEmailAndPassword(auth, email, password)
       await updateProfile(result.user, { displayName })
       return result.user
-    } catch (e: any) {
-      error.value = mapAuthError(e.code)
+    } catch (e: unknown) {
+      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
       return null
     } finally {
       loading.value = false
@@ -54,8 +55,8 @@ export function useFirebaseAuth() {
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
       return result.user
-    } catch (e: any) {
-      error.value = mapAuthError(e.code)
+    } catch (e: unknown) {
+      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
       return null
     } finally {
       loading.value = false

@@ -9,7 +9,7 @@ const containerRef = ref<HTMLElement | null>(null)
 let isScrolling = false
 let currentSection = 0
 
-function onVideoMounted(el: any) {
+function onVideoMounted(el: Element | null) {
   if (el instanceof HTMLVideoElement) {
     el.play().catch(() => {})
   }
