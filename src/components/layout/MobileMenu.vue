@@ -46,7 +46,7 @@ async function handleLogout() {
           <!-- Logo -->
           <div class="mb-8">
             <RouterLink to="/" @click="emit('close')">
-              <img src="/photo/b-logo/LOGO.png" :alt="t('common.brandName')" class="w-[60px]" />
+              <img :src="$asset('/photo/b-logo/LOGO.png')" :alt="t('common.brandName')" class="w-[60px]" />
             </RouterLink>
           </div>
 
@@ -93,22 +93,22 @@ async function handleLogout() {
           <ul class="mt-6 flex gap-2.5">
             <li>
               <a href="#" target="_blank">
-                <img src="/photo/p-logo/p-fb.svg" alt="Facebook" class="w-[30px]" />
+                <img :src="$asset('/photo/p-logo/p-fb.svg')" alt="Facebook" class="w-[30px]" />
               </a>
             </li>
             <li>
               <a href="#" target="_blank">
-                <img src="/photo/p-logo/p-ig.svg" alt="Instagram" class="w-[30px]" />
+                <img :src="$asset('/photo/p-logo/p-ig.svg')" alt="Instagram" class="w-[30px]" />
               </a>
             </li>
             <li>
               <RouterLink to="/inquiry" @click="emit('close')">
-                <img src="/photo/p-logo/p-ask.svg" :alt="t('common.inquiry')" class="w-[30px]" />
+                <img :src="$asset('/photo/p-logo/p-ask.svg')" :alt="t('common.inquiry')" class="w-[30px]" />
               </RouterLink>
             </li>
             <li>
               <RouterLink to="/cart" class="relative" @click="emit('close')">
-                <img src="/photo/p-logo/p-cart.svg" :alt="t('common.cart')" class="w-[30px]" />
+                <img :src="$asset('/photo/p-logo/p-cart.svg')" :alt="t('common.cart')" class="w-[30px]" />
                 <span
                   v-if="cart.itemCount > 0"
                   class="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"

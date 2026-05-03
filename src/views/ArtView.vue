@@ -391,7 +391,7 @@ function scrollToTop() {
         {{ t('art.intro') }}
       </p>
       <div class="intro-logo mx-auto mb-8 max-w-75">
-        <img src="/photo of ART/forartlogo.png" alt="豆之間 Logo" class="w-full" />
+        <img :src="$asset('/photo of ART/forartlogo.png')" alt="豆之間 Logo" class="w-full" />
       </div>
       <p class="intro-text-bottom whitespace-pre-line text-sm leading-relaxed text-gray-300 lg:text-base">
         {{ t('art.subtitle') }}
@@ -401,7 +401,7 @@ function scrollToTop() {
     <!-- ====== Section 1: 穀倉的機遇 — Hero Pin ====== -->
     <div class="hero-panel relative h-screen overflow-hidden">
       <img
-        src="/photo of ART/structure.JPG"
+        :src="$asset('/photo of ART/structure.JPG')"
         alt="穀倉"
         class="hero-img absolute inset-0 h-full w-full object-cover"
       />
@@ -437,7 +437,7 @@ function scrollToTop() {
 
       <div class="side-by-side flex flex-col items-center gap-6 lg:flex-row">
         <div class="side-img lg:w-1/3">
-          <img src="/photo of ART/house.png" alt="池上" class="rounded-lg" />
+          <img :src="$asset('/photo of ART/house.png')" alt="池上" class="rounded-lg" />
         </div>
         <p class="side-text whitespace-pre-line text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
           {{ t('art.granary.history') }}
@@ -448,7 +448,7 @@ function scrollToTop() {
     <!-- ====== Section 2: 溯土 — Hero Pin ====== -->
     <div class="hero-panel relative h-screen overflow-hidden">
       <img
-        src="/photo of ART/the-art.jpg"
+        :src="$asset('/photo of ART/the-art.jpg')"
         alt="溯土"
         class="hero-img absolute inset-0 h-full w-full object-cover"
       />
@@ -484,7 +484,7 @@ function scrollToTop() {
 
       <div class="side-by-side flex flex-col items-center gap-6 lg:flex-row">
         <div class="side-img lg:w-1/3">
-          <img src="/photo of ART/artist.svg" alt="Artist" class="rounded-lg" />
+          <img :src="$asset('/photo of ART/artist.svg')" alt="Artist" class="rounded-lg" />
         </div>
         <p class="side-text whitespace-pre-line text-left text-sm leading-relaxed text-gray-300 lg:w-2/3">
           {{ t('art.revert.artist') }}
@@ -495,7 +495,7 @@ function scrollToTop() {
     <!-- ====== Section 3: 豆之間 — Hero Pin ====== -->
     <div class="hero-panel relative h-screen overflow-hidden">
       <img
-        src="/photo of ART/combine.png"
+        :src="$asset('/photo of ART/combine.png')"
         alt="豆之間"
         class="hero-img absolute inset-0 h-full w-full object-cover"
       />
@@ -536,7 +536,7 @@ function scrollToTop() {
           class="gallery-slide flex h-screen w-screen flex-none items-center justify-center p-8"
         >
           <img
-            src="/photo of ART/show1.png"
+            :src="$asset('/photo of ART/show1.png')"
             alt=""
             class="max-h-[80vh] max-w-[80vw] rounded-2xl object-contain shadow-2xl"
           />
@@ -545,7 +545,7 @@ function scrollToTop() {
           class="gallery-slide flex h-screen w-screen flex-none items-center justify-center p-8"
         >
           <img
-            src="/photo of ART/show2.png"
+            :src="$asset('/photo of ART/show2.png')"
             alt=""
             class="max-h-[80vh] max-w-[80vw] rounded-2xl object-contain shadow-2xl"
           />
@@ -554,7 +554,7 @@ function scrollToTop() {
           class="gallery-slide flex h-screen w-screen flex-none items-center justify-center p-8"
         >
           <img
-            src="/photo of ART/show3.png"
+            :src="$asset('/photo of ART/show3.png')"
             alt=""
             class="max-h-[80vh] max-w-[80vw] rounded-2xl object-contain shadow-2xl"
           />
@@ -565,7 +565,7 @@ function scrollToTop() {
     <!-- ====== Final Image ====== -->
     <section class="mx-auto max-w-3xl px-4 py-20">
       <div class="final-img overflow-hidden rounded-lg">
-        <img src="/photo of ART/final.png" alt="" class="w-full object-cover" />
+        <img :src="$asset('/photo of ART/final.png')" alt="" class="w-full object-cover" />
       </div>
     </section>
 
@@ -574,7 +574,7 @@ function scrollToTop() {
       class="fixed bottom-8 right-8 z-30 flex flex-col items-center gap-1 rounded-full bg-white/20 p-3 backdrop-blur-sm transition-colors hover:bg-white/40"
       @click="scrollToTop"
     >
-      <img src="/photo/uparrow.png" alt="上" class="w-5" />
+      <img :src="$asset('/photo/uparrow.png')" alt="上" class="w-5" />
       <span class="text-xs">{{ t('common.backToTop') }}</span>
     </button>
   </div>

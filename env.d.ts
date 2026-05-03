@@ -19,3 +19,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $asset: (path: string) => string
+  }
+}
+
+export {}

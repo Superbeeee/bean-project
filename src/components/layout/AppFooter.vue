@@ -32,7 +32,7 @@ const { t } = useI18n()
           <li>
             <a href="#" target="_blank">
               <img
-                src="/photo/b-logo/b-fb.svg"
+                :src="$asset('/photo/b-logo/b-fb.svg')"
                 alt="Facebook"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />
@@ -41,7 +41,7 @@ const { t } = useI18n()
           <li>
             <a href="#" target="_blank">
               <img
-                src="/photo/b-logo/b-ig.svg"
+                :src="$asset('/photo/b-logo/b-ig.svg')"
                 alt="Instagram"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />
@@ -50,7 +50,7 @@ const { t } = useI18n()
           <li>
             <RouterLink to="/inquiry">
               <img
-                src="/photo/b-logo/b-ask.png"
+                :src="$asset('/photo/b-logo/b-ask.png')"
                 :alt="t('common.inquiry')"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />
@@ -59,7 +59,7 @@ const { t } = useI18n()
           <li>
             <RouterLink to="/cart">
               <img
-                src="/photo/b-logo/b-cart.svg"
+                :src="$asset('/photo/b-logo/b-cart.svg')"
                 :alt="t('common.cart')"
                 class="w-[30px] transition-transform duration-300 hover:scale-150"
               />

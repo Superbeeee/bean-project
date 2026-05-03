@@ -82,7 +82,7 @@ function toggleMenu() {
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
             <img
-              src="/photo/p-logo/p-fb.svg"
+              :src="$asset('/photo/p-logo/p-fb.svg')"
               alt=""
               class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
@@ -96,7 +96,7 @@ function toggleMenu() {
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
             <img
-              src="/photo/p-logo/p-ig.svg"
+              :src="$asset('/photo/p-logo/p-ig.svg')"
               alt=""
               class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
@@ -110,7 +110,7 @@ function toggleMenu() {
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
             <img
-              src="/photo/p-logo/p-ask.svg"
+              :src="$asset('/photo/p-logo/p-ask.svg')"
               alt=""
               class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
@@ -124,7 +124,7 @@ function toggleMenu() {
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
             <img
-              src="/photo/p-logo/p-cart.svg"
+              :src="$asset('/photo/p-logo/p-cart.svg')"
               alt=""
               class="absolute inset-0 h-[30px] w-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />

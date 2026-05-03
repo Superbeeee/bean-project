@@ -10,6 +10,8 @@
     "sync:i18n": "tsx scripts/sync-i18n.ts",
     "prebuild": "npm run sync:i18n",
     "build": "vue-tsc -b && vite build",
+    "postbuild": "cp dist/index.html dist/404.html",
+    "build:ci": "vue-tsc -b && vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview"
   },
   "dependencies": {

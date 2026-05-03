@@ -26,7 +26,7 @@ const { t } = useI18n()
           <div class="flex items-start gap-4">
             <div class="shrink-0">
               <img
-                src="/photo of MAP/building.png"
+                :src="$asset('/photo of MAP/building.png')"
                 alt="店面"
                 class="w-16 transition-transform duration-1000 lg:w-20"
               />
@@ -42,7 +42,7 @@ const { t } = useI18n()
           <div class="flex items-start gap-4">
             <div class="shrink-0">
               <img
-                src="/photo of MAP/train-station.png"
+                :src="$asset('/photo of MAP/train-station.png')"
                 alt="車站"
                 class="w-16 transition-transform duration-1000 lg:w-20"
               />

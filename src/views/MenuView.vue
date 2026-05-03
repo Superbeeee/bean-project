@@ -120,7 +120,7 @@ function scrollToTop() {
       class="fixed bottom-8 right-8 z-30 flex flex-col items-center gap-1 rounded-full bg-white/80 p-3 shadow-md backdrop-blur-sm transition-colors hover:bg-white"
       @click="scrollToTop"
     >
-      <img src="/photo/uparrow.png" alt="↑" class="w-5" />
+      <img :src="$asset('/photo/uparrow.png')" alt="↑" class="w-5" />
       <span class="text-xs">{{ t('common.backToTop') }}</span>
     </button>
   </div>

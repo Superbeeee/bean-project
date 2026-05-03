@@ -9,6 +9,9 @@ import './assets/main.css'
 const app = createApp(App)
 const pinia = createPinia()
 
+app.config.globalProperties.$asset = (path: string) =>
+  import.meta.env.BASE_URL + path.replace(/^\//, '')
+
 app.use(pinia)
 app.use(i18n)
 app.use(router)
