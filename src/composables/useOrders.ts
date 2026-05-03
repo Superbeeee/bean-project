@@ -1,7 +1,6 @@
 import { ref } from 'vue'
-import { collection, addDoc, serverTimestamp, type FieldValue } from 'firebase/firestore'
-import { db } from '@/firebase'
-import type { Order, OrderItem } from '@/types'
+import { getProviders } from '@/services'
+import type { OrderItem } from '@/types'
 import type { CartItem } from '@/stores/cart'
 
 export function useOrders() {
@@ -44,24 +43,19 @@ export function useOrders() {
     error.value = null
 
     try {
-      // 寫入 Firestore 時 createdAt 必須是 FieldValue（serverTimestamp()），
-      // 讀回後才會是 Timestamp。兩者型別不同，用獨立的寫入型別避免 as any。
-      const orderData: Omit<Order, 'id' | 'createdAt'> & { createdAt: FieldValue } = {
+      const { data } = await getProviders()
+      const orderId = await data.createOrder({
         ...formData,
-        delivery: formData.delivery as Order['delivery'],
-        payment: formData.payment as Order['payment'],
+        delivery: formData.delivery as '宅配' | '門市取貨',
+        payment: formData.payment as '貨到付款' | '轉帳匯款',
         items: cartItemsToOrderItems(cartItems),
         subtotal: totals.subtotal,
         shippingFee: totals.shippingFee,
         discount: totals.discount,
         total: totals.total,
         userId,
-        status: 'pending',
-        createdAt: serverTimestamp(),
-      }
-
-      const docRef = await addDoc(collection(db, 'orders'), orderData)
-      return docRef.id
+      })
+      return orderId
     } catch (e) {
       error.value = '訂單送出失敗，請稍後再試'
       console.error('Failed to create order:', e)

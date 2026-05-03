@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { onAuthStateChanged, type User } from 'firebase/auth'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
-import { auth, db } from '@/firebase'
+import { getProviders } from '@/services'
+import type { AuthUser } from '@/services/types'
 import type { UserProfile } from '@/types'
 
 export const useAuthStore = defineStore('auth', () => {
-  const user = ref<User | null>(null)
+  const user = ref<AuthUser | null>(null)
   const profile = ref<UserProfile | null>(null)
   const initialized = ref(false)
   const loading = ref(true)
@@ -16,75 +15,76 @@ export const useAuthStore = defineStore('auth', () => {
     user.value?.displayName || user.value?.email?.split('@')[0] || ''
   )
 
-  function init() {
+  async function loadProfile(authUser: AuthUser) {
+    const uid = authUser.uid
+    const { data } = await getProviders()
+
+    try {
+      const existing = await data.getUserProfile(uid)
+
+      // 等待 provider 回應期間，auth 狀態可能已變更
+      if (user.value?.uid !== uid) return
+
+      if (existing) {
+        profile.value = existing
+      } else {
+        const newProfile: UserProfile = {
+          uid: authUser.uid,
+          email: authUser.email,
+          displayName: authUser.displayName,
+          photoURL: authUser.photoURL,
+        }
+        await data.setUserProfile(uid, newProfile)
+        if (user.value?.uid === uid) {
+          profile.value = newProfile
+        }
+      }
+    } catch (e) {
+      console.warn('[auth] 無法讀取 user profile:', e)
+      if (user.value?.uid === uid) {
+        profile.value = {
+          uid: authUser.uid,
+          email: authUser.email,
+          displayName: authUser.displayName,
+          photoURL: authUser.photoURL,
+        }
+      }
+    }
+  }
+
+  async function init() {
+    const { auth } = await getProviders()
+
     return new Promise<void>((resolve) => {
-      onAuthStateChanged(auth, (firebaseUser) => {
-        // 記錄當下的 uid，用來判斷 Firestore 非同步作業完成前
-        // 若 onAuthStateChanged 再次觸發，結果是否已過時。
-        const uid = firebaseUser?.uid ?? null
+      auth.onAuthChange(async (authUser) => {
+        const uid = authUser?.uid ?? null
 
-        user.value = firebaseUser
-        if (!firebaseUser) profile.value = null
+        user.value = authUser
+        if (!authUser) profile.value = null
 
-        const run = async () => {
-          if (firebaseUser && uid) {
-            try {
-              const profileRef = doc(db, 'users', uid)
-              const profileSnap = await getDoc(profileRef)
-
-              // 等待 Firestore 回應期間，登入狀態可能已改變（如登出或切換帳號）。
-              // 若使用者已變更，丟棄此次過時的結果，避免 user/profile 狀態不一致。
-              if (user.value?.uid !== uid) return
-
-              if (profileSnap.exists()) {
-                profile.value = profileSnap.data() as UserProfile
-              } else {
-                const newProfile: UserProfile = {
-                  uid: firebaseUser.uid,
-                  email: firebaseUser.email,
-                  displayName: firebaseUser.displayName,
-                  photoURL: firebaseUser.photoURL,
-                }
-                await setDoc(profileRef, newProfile)
-                if (user.value?.uid === uid) {
-                  profile.value = newProfile
-                }
-              }
-            } catch (e) {
-              console.warn('[auth] Failed to load/create user profile:', e)
-              if (user.value?.uid === uid) {
-                profile.value = {
-                  uid: firebaseUser.uid,
-                  email: firebaseUser.email,
-                  displayName: firebaseUser.displayName,
-                  photoURL: firebaseUser.photoURL,
-                }
-              }
-            }
-          }
-
-          loading.value = false
-          if (!initialized.value) {
-            initialized.value = true
-            resolve()
-          }
+        if (authUser && uid) {
+          await loadProfile(authUser)
         }
 
-        run()
+        loading.value = false
+        if (!initialized.value) {
+          initialized.value = true
+          resolve()
+        }
       })
     })
   }
 
   async function updateSavedAddress(address: UserProfile['savedAddress']) {
     if (!user.value) return
+    const { data } = await getProviders()
     try {
-      const profileRef = doc(db, 'users', user.value.uid)
-      await setDoc(profileRef, { savedAddress: address }, { merge: true })
+      await data.updateSavedAddress(user.value.uid, address)
       if (profile.value) {
         profile.value.savedAddress = address
       }
     } catch (e) {
-      console.warn('[auth] Failed to save address:', e)
+      console.warn('[auth] 無法儲存地址:', e)
     }
   }
 

@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 dist/
+tsconfig.tsbuildinfo
 
 # Editor
 .vscode/*
@@ -18,6 +19,14 @@ dist/
 # Service Account Keys
 serviceAccountKey.json
 service-account.json
+
+# Local backend SQLite DB（僅程式碼進版控）
+server/data.db
+server/data.db-shm
+server/data.db-wal
+
+# Screenshots
+screenshot/
 
 # OS
 .DS_Store

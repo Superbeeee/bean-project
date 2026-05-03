@@ -181,7 +181,7 @@ const sections = [
       <!-- Background Video -->
       <video
         v-if="section.type === 'video'"
-        :ref="(el) => onVideoMounted(el)"
+        :ref="(el) => onVideoMounted(el as Element | null)"
         class="absolute inset-0 h-full w-full object-cover"
         loop
         muted

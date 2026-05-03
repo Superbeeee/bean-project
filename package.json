@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "cd server && npm run dev",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "sync:i18n": "tsx scripts/sync-i18n.ts",
     "prebuild": "npm run sync:i18n",
     "build": "vue-tsc -b && vite build",
@@ -24,6 +26,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.2.0",
     "@vitejs/plugin-vue": "^6.0.4",
+    "concurrently": "^9.2.1",
     "dotenv": "^17.2.4",
     "firebase-admin": "^13.6.1",
     "tailwindcss": "^4.1.18",

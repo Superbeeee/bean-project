@@ -1,28 +1,24 @@
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-  updateProfile,
-  type User,
-} from 'firebase/auth'
-import { FirebaseError } from 'firebase/app'
-import { auth } from '@/firebase'
 import { ref } from 'vue'
+import { getProviders } from '@/services'
+import type { AuthUser } from '@/services/types'
 
+/**
+ * 認證操作的 composable。
+ * 內部依賴 AuthProvider 介面，不直接引用 Firebase SDK。
+ * 對外 API 保持不變，LoginView 等元件無需修改。
+ */
 export function useFirebaseAuth() {
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  async function loginWithEmail(email: string, password: string): Promise<User | null> {
+  async function loginWithEmail(email: string, password: string): Promise<AuthUser | null> {
     loading.value = true
     error.value = null
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password)
-      return result.user
+      const { auth } = await getProviders()
+      return await auth.loginWithEmail(email, password)
     } catch (e: unknown) {
-      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
+      error.value = e instanceof Error ? e.message : '登入失敗，請稍後再試'
       return null
     } finally {
       loading.value = false
@@ -33,30 +29,28 @@ export function useFirebaseAuth() {
     email: string,
     password: string,
     displayName: string
-  ): Promise<User | null> {
+  ): Promise<AuthUser | null> {
     loading.value = true
     error.value = null
     try {
-      const result = await createUserWithEmailAndPassword(auth, email, password)
-      await updateProfile(result.user, { displayName })
-      return result.user
+      const { auth } = await getProviders()
+      return await auth.registerWithEmail(email, password, displayName)
     } catch (e: unknown) {
-      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
+      error.value = e instanceof Error ? e.message : '註冊失敗，請稍後再試'
       return null
     } finally {
       loading.value = false
     }
   }
 
-  async function loginWithGoogle(): Promise<User | null> {
+  async function loginWithGoogle(): Promise<AuthUser | null> {
     loading.value = true
     error.value = null
     try {
-      const provider = new GoogleAuthProvider()
-      const result = await signInWithPopup(auth, provider)
-      return result.user
+      const { auth } = await getProviders()
+      return await auth.loginWithGoogle()
     } catch (e: unknown) {
-      error.value = mapAuthError(e instanceof FirebaseError ? e.code : '')
+      error.value = e instanceof Error ? e.message : '登入失敗，請稍後再試'
       return null
     } finally {
       loading.value = false
@@ -64,21 +58,9 @@ export function useFirebaseAuth() {
   }
 
   async function logout(): Promise<void> {
-    await signOut(auth)
+    const { auth } = await getProviders()
+    await auth.logout()
   }
 
   return { loading, error, loginWithEmail, registerWithEmail, loginWithGoogle, logout }
-}
-
-function mapAuthError(code: string): string {
-  const map: Record<string, string> = {
-    'auth/email-already-in-use': '此電子郵件已被註冊',
-    'auth/invalid-email': '電子郵件格式不正確',
-    'auth/user-not-found': '查無此帳號',
-    'auth/wrong-password': '密碼錯誤',
-    'auth/weak-password': '密碼強度不足（至少6個字元）',
-    'auth/popup-closed-by-user': '登入視窗已關閉',
-    'auth/invalid-credential': '帳號或密碼錯誤',
-  }
-  return map[code] || '登入失敗，請稍後再試'
 }
