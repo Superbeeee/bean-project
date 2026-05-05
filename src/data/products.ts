@@ -1,3 +1,5 @@
+import { asset } from '@/utils/asset'
+
 export interface Product {
   id: string
   name: string
@@ -25,7 +27,7 @@ export const products: Product[] = [
     category: 'bean',
     price: 100,
     originalPrice: 120,
-    image: '/photo of SC/bean/image of soy.jpg',
+    image: asset('/photo of SC/bean/image of soy.jpg'),
     description: '【池農國產豆漿冷凍宅配】\n豆漿經過冷凍後解凍\n蛋白質會發生一些變化，\n冷凍後的豆漿會呈現細豆腐絲\n和油水分離的情況，\n並不是偷工減料，也不是壞掉喔!\n請加熱後喝。',
     specs: [
       '品名·國產豆漿(原味)',
@@ -60,7 +62,7 @@ export const products: Product[] = [
     category: 'bean',
     price: 180,
     originalPrice: 200,
-    image: '/photo of SC/bean/image of tofu skin.jpg',
+    image: asset('/photo of SC/bean/image of tofu skin.jpg'),
   },
   {
     id: 'dried-tofu',
@@ -68,7 +70,7 @@ export const products: Product[] = [
     category: 'bean',
     price: 70,
     originalPrice: 90,
-    image: '/photo of SC/bean/image of dried tofu.jpg',
+    image: asset('/photo of SC/bean/image of dried tofu.jpg'),
   },
   {
     id: 'black-dried-tofu',
@@ -76,7 +78,7 @@ export const products: Product[] = [
     category: 'bean',
     price: 110,
     originalPrice: 130,
-    image: '/photo of SC/bean/image of black dried tofu.jpg',
+    image: asset('/photo of SC/bean/image of black dried tofu.jpg'),
   },
   {
     id: 'soy-bun',
@@ -84,7 +86,7 @@ export const products: Product[] = [
     category: 'bun',
     price: 150,
     originalPrice: 180,
-    image: '/photo of SC/steamed bun/image of soy bread.png',
+    image: asset('/photo of SC/steamed bun/image of soy bread.png'),
   },
   {
     id: 'red-bean-bun',
@@ -92,7 +94,7 @@ export const products: Product[] = [
     category: 'bun',
     price: 150,
     originalPrice: 180,
-    image: '/photo of SC/steamed bun/image of red bean.jpg',
+    image: asset('/photo of SC/steamed bun/image of red bean.jpg'),
   },
   {
     id: 'pumpkin-bun',
@@ -100,7 +102,7 @@ export const products: Product[] = [
     category: 'bun',
     price: 150,
     originalPrice: 180,
-    image: '/photo of SC/steamed bun/image of pumpkim bread.jpg',
+    image: asset('/photo of SC/steamed bun/image of pumpkim bread.jpg'),
   },
   {
     id: 'brown-sugar-bun',
@@ -108,7 +110,7 @@ export const products: Product[] = [
     category: 'bun',
     price: 150,
     originalPrice: 180,
-    image: '/photo of SC/steamed bun/image of black suger bread.jpg',
+    image: asset('/photo of SC/steamed bun/image of black suger bread.jpg'),
   },
   {
     id: 'pepper-cookie',
@@ -116,7 +118,7 @@ export const products: Product[] = [
     category: 'cookie',
     price: 120,
     originalPrice: 140,
-    image: '/photo of SC/cookies/image of pepper cookies.jpg',
+    image: asset('/photo of SC/cookies/image of pepper cookies.jpg'),
   },
   {
     id: 'curry-cookie',
@@ -124,7 +126,7 @@ export const products: Product[] = [
     category: 'cookie',
     price: 120,
     originalPrice: 140,
-    image: '/photo of SC/cookies/image of yellow cookies.jpg',
+    image: asset('/photo of SC/cookies/image of yellow cookies.jpg'),
   },
   {
     id: 'quinoa-cookie',
@@ -132,7 +134,7 @@ export const products: Product[] = [
     category: 'cookie',
     price: 120,
     originalPrice: 140,
-    image: '/photo of SC/cookies/image of red quinoa cookies.jpg',
+    image: asset('/photo of SC/cookies/image of red quinoa cookies.jpg'),
   },
   {
     id: 'cheese-cookie',
@@ -140,6 +142,6 @@ export const products: Product[] = [
     category: 'cookie',
     price: 120,
     originalPrice: 140,
-    image: '/photo of SC/cookies/image of cheese cookies.jpg',
+    image: asset('/photo of SC/cookies/image of cheese cookies.jpg'),
   },
 ]

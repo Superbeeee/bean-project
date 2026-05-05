@@ -29,7 +29,7 @@ function toggleMenu() {
       <!-- Logo -->
       <RouterLink to="/" class="mt-4 shrink-0 pr-4 lg:mt-[30px] lg:pr-[50px]">
         <img
-          :src="theme === 'white' ? '/photo/w-logo/W-LOGO.png' : '/photo/b-logo/LOGO.png'"
+          :src="$asset(theme === 'white' ? '/photo/w-logo/W-LOGO.png' : '/photo/b-logo/LOGO.png')"
           :alt="t('common.brandName')"
           class="w-[80px] lg:w-[95px]"
         />
@@ -77,7 +77,7 @@ function toggleMenu() {
         <li>
           <a href="#" target="_blank" class="group relative inline-block h-[30px] w-[30px]">
             <img
-              :src="theme === 'white' ? '/photo/w-logo/w-fb.svg' : '/photo/b-logo/b-fb.svg'"
+              :src="$asset(theme === 'white' ? '/photo/w-logo/w-fb.svg' : '/photo/b-logo/b-fb.svg')"
               alt="Facebook"
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
@@ -91,7 +91,7 @@ function toggleMenu() {
         <li>
           <a href="#" target="_blank" class="group relative inline-block h-[30px] w-[30px]">
             <img
-              :src="theme === 'white' ? '/photo/w-logo/w-ig.svg' : '/photo/b-logo/b-ig.svg'"
+              :src="$asset(theme === 'white' ? '/photo/w-logo/w-ig.svg' : '/photo/b-logo/b-ig.svg')"
               alt="Instagram"
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
@@ -105,7 +105,7 @@ function toggleMenu() {
         <li>
           <RouterLink to="/inquiry" class="group relative inline-block h-[30px] w-[30px]">
             <img
-              :src="theme === 'white' ? '/photo/w-logo/w-ask-logo.png' : '/photo/b-logo/b-ask.png'"
+              :src="$asset(theme === 'white' ? '/photo/w-logo/w-ask-logo.png' : '/photo/b-logo/b-ask.png')"
               :alt="t('common.inquiry')"
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />
@@ -119,7 +119,7 @@ function toggleMenu() {
         <li>
           <RouterLink to="/cart" class="group relative inline-block h-[30px] w-[30px]">
             <img
-              :src="theme === 'white' ? '/photo/w-logo/w-cart.svg' : '/photo/b-logo/b-cart.svg'"
+              :src="$asset(theme === 'white' ? '/photo/w-logo/w-cart.svg' : '/photo/b-logo/b-cart.svg')"
               :alt="t('common.cart')"
               class="h-[30px] w-[30px] transition-opacity duration-300 group-hover:opacity-0"
             />

@@ -4,13 +4,13 @@ import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
 import { useAuthStore } from './stores/auth'
+import { asset } from './utils/asset'
 import './assets/main.css'
 
 const app = createApp(App)
 const pinia = createPinia()
 
-app.config.globalProperties.$asset = (path: string) =>
-  import.meta.env.BASE_URL + path.replace(/^\//, '')
+app.config.globalProperties.$asset = asset
 
 app.use(pinia)
 app.use(i18n)

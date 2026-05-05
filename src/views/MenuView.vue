@@ -2,6 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { useI18n } from 'vue-i18n'
+import { asset } from '@/utils/asset'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
@@ -13,9 +14,9 @@ const menuSections = [
   {
     key: 'signature',
     slides: [
-      '/photo of Carousel/show1/show1-1.png',
-      '/photo of Carousel/show1/show1-2.png',
-      '/photo of Carousel/show1/show1-3.png',
+      asset('/photo of Carousel/show1/show1-1.png'),
+      asset('/photo of Carousel/show1/show1-2.png'),
+      asset('/photo of Carousel/show1/show1-3.png'),
     ],
     items: [
       { key: 'a1', price: 'NT$60' },
@@ -29,9 +30,9 @@ const menuSections = [
   {
     key: 'main',
     slides: [
-      '/photo of Carousel/show2/show2-1.png',
-      '/photo of Carousel/show2/show2-2.png',
-      '/photo of Carousel/show2/show2-3.png',
+      asset('/photo of Carousel/show2/show2-1.png'),
+      asset('/photo of Carousel/show2/show2-2.png'),
+      asset('/photo of Carousel/show2/show2-3.png'),
     ],
     items: [
       { key: 'b1', price: 'NT$180' },
@@ -47,9 +48,9 @@ const menuSections = [
   {
     key: 'set',
     slides: [
-      '/photo of Carousel/show3/show3-1.png',
-      '/photo of Carousel/show3/show3-2.png',
-      '/photo of Carousel/show3/show3-3.png',
+      asset('/photo of Carousel/show3/show3-1.png'),
+      asset('/photo of Carousel/show3/show3-2.png'),
+      asset('/photo of Carousel/show3/show3-3.png'),
     ],
     items: [
       { key: 'c1', price: 'NT$290' },

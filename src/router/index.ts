@@ -4,7 +4,7 @@ import i18n from '@/i18n'
 const { t } = i18n.global
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior() {
     return { top: 0 }
   },

@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/layout/AppFooter.vue'
+import { asset } from '@/utils/asset'
 
 const { t } = useI18n()
 
@@ -127,7 +128,7 @@ const sections = [
   {
     id: 'shop',
     to: '/shop',
-    image: '/img/首頁1.png',
+    image: asset('/img/首頁1.png'),
     title: 'BEANGO! Get a Taste!',
     buttonKey: 'home.shopButton',
     type: 'image' as const,
@@ -136,7 +137,7 @@ const sections = [
   {
     id: 'art',
     to: '/art',
-    video: '/video/sbs-intro.mp4',
+    video: asset('/video/sbs-intro.mp4'),
     title: 'What is needed is a Bean Bang!',
     buttonKey: 'home.artButton',
     type: 'video' as const,
@@ -145,7 +146,7 @@ const sections = [
   {
     id: 'menu',
     to: '/menu',
-    image: '/img/首頁3.png',
+    image: asset('/img/首頁3.png'),
     title: 'How about Plan Bean?',
     buttonKey: 'home.menuButton',
     type: 'image' as const,
@@ -154,7 +155,7 @@ const sections = [
   {
     id: 'map',
     to: '/map',
-    image: '/img/首頁4.png',
+    image: asset('/img/首頁4.png'),
     title: 'Where have you bean?',
     buttonKey: 'home.mapButton',
     type: 'image' as const,
