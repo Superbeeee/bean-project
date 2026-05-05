@@ -11,6 +11,7 @@ import { db } from '@/firebase'
 import type { DataProvider, OrderCreateInput, InquiryCreateInput } from '@/services/types'
 import type { Product } from '@/data/products'
 import type { UserProfile } from '@/types'
+import { resolveAsset } from '@/utils/asset'
 
 const FIRESTORE_TIMEOUT_MS = 10_000
 
@@ -23,10 +24,17 @@ function withTimeout<T>(p: Promise<T>, ms = FIRESTORE_TIMEOUT_MS): Promise<T> {
   ])
 }
 
+// Firestore 內部 image 欄位若未含 base 前綴（例如 seed 進去的 raw path），
+// 在讀取時補上，確保前端在 GitHub Pages 等子路徑部署環境下能正確載入。
+function normalizeProduct(id: string, data: Record<string, unknown>): Product {
+  const image = typeof data.image === 'string' ? resolveAsset(data.image) : data.image
+  return { id, ...data, image } as Product
+}
+
 export class FirebaseDataProvider implements DataProvider {
   async getProducts(): Promise<Product[]> {
     const snapshot = await withTimeout(getDocs(collection(db, 'products')))
-    return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as Product)
+    return snapshot.docs.map((d) => normalizeProduct(d.id, d.data()))
   }
 
   async getCategories(): Promise<{ id: string; name: string }[]> {
@@ -36,7 +44,7 @@ export class FirebaseDataProvider implements DataProvider {
 
   async getProductById(id: string): Promise<Product | null> {
     const snap = await withTimeout(getDoc(doc(db, 'products', id)))
-    if (snap.exists()) return { id: snap.id, ...snap.data() } as Product
+    if (snap.exists()) return normalizeProduct(snap.id, snap.data())
     return null
   }
 

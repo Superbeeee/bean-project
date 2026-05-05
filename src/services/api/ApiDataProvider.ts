@@ -1,6 +1,11 @@
 import type { DataProvider, OrderCreateInput, InquiryCreateInput } from '@/services/types'
 import type { Product } from '@/data/products'
 import type { UserProfile } from '@/types'
+import { resolveAsset } from '@/utils/asset'
+
+function normalizeProduct(p: Product): Product {
+  return typeof p.image === 'string' ? { ...p, image: resolveAsset(p.image) } : p
+}
 
 export class ApiDataProvider implements DataProvider {
   private baseUrl: string
@@ -30,7 +35,8 @@ export class ApiDataProvider implements DataProvider {
   }
 
   async getProducts(): Promise<Product[]> {
-    return this.fetchJson<Product[]>('/api/products')
+    const list = await this.fetchJson<Product[]>('/api/products')
+    return list.map(normalizeProduct)
   }
 
   async getCategories(): Promise<{ id: string; name: string }[]> {
@@ -39,7 +45,8 @@ export class ApiDataProvider implements DataProvider {
 
   async getProductById(id: string): Promise<Product | null> {
     try {
-      return await this.fetchJson<Product>(`/api/products/${id}`)
+      const product = await this.fetchJson<Product>(`/api/products/${id}`)
+      return normalizeProduct(product)
     } catch (e: unknown) {
       if (e instanceof Error && e.message.includes('404')) return null
       throw e
