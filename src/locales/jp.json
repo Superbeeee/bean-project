@@ -84,11 +84,7 @@
     "cityTaichung": "台中市",
     "cityTainan": "台南市",
     "cityKaohsiung": "高雄市",
-    "cityOther": "その他",
-    "errorName": "受取人名を入力してください",
-    "errorPhone": "電話番号の形式が正しくありません。09から始まる10桁で入力してください",
-    "errorDistrict": "区／町／村を入力してください",
-    "errorAddress": "詳細住所を入力してください"
+    "cityOther": "その他"
   },
   "auth": {
     "register": "アカウント登録",

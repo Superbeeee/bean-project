@@ -84,11 +84,7 @@
     "cityTaichung": "타이중시",
     "cityTainan": "타이난시",
     "cityKaohsiung": "가오슝시",
-    "cityOther": "기타",
-    "errorName": "수령인 이름을 입력하세요",
-    "errorPhone": "전화번호 형식이 올바르지 않습니다. 09로 시작하는 10자리로 입력하세요",
-    "errorDistrict": "구／읍／면을 입력하세요",
-    "errorAddress": "상세 주소를 입력하세요"
+    "cityOther": "기타"
   },
   "auth": {
     "register": "회원가입",
