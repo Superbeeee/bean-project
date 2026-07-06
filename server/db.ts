@@ -18,7 +18,7 @@ db.exec(`
     display_name TEXT,
     photo_url TEXT,
     saved_address TEXT,   -- JSON string
-    password_hash TEXT,   -- SHA-256 hex，Email 登入用（Google OAuth 使用者為 NULL）
+    password_hash TEXT,   -- scrypt 雜湊（salt:hash hex），Email 登入用（Google OAuth 使用者為 NULL）
     created_at TEXT DEFAULT (datetime('now'))
   );
 

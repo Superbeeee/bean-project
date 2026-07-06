@@ -33,14 +33,15 @@ app.put('/:uid', requireAuth(), async (c) => {
 
   const body = await c.req.json()
 
+  // Partial upsert：body 未帶的欄位保留原值，避免部分更新（如只存地址）洗掉其他欄位
   db.prepare(`
     INSERT INTO users (uid, email, display_name, photo_url, saved_address)
     VALUES (?, ?, ?, ?, ?)
     ON CONFLICT(uid) DO UPDATE SET
-      email = excluded.email,
-      display_name = excluded.display_name,
-      photo_url = excluded.photo_url,
-      saved_address = excluded.saved_address
+      email = COALESCE(excluded.email, email),
+      display_name = COALESCE(excluded.display_name, display_name),
+      photo_url = COALESCE(excluded.photo_url, photo_url),
+      saved_address = COALESCE(excluded.saved_address, saved_address)
   `).run(
     uid,
     body.email ?? null,

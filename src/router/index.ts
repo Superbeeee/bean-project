@@ -81,6 +81,12 @@ const router = createRouter({
       component: () => import('@/views/InquirySuccessView.vue'),
       meta: { titleKey: 'route.inquirySuccess', headerTheme: 'dark' },
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/views/NotFoundView.vue'),
+      meta: { headerTheme: 'dark' },
+    },
   ],
 })
 

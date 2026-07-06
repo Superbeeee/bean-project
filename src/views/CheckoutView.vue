@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
@@ -54,7 +54,16 @@ const form = reactive({
   note: '',
 })
 
+// 門市取貨免運，宅配依購物車運費計算
+const shippingFee = computed(() => (form.delivery === '門市取貨' ? 0 : cart.shippingFee))
+const total = computed(() => cart.subtotal - cart.discount + shippingFee.value)
+
 onMounted(() => {
+  // 空購物車不允許結帳，導回購物車頁
+  if (cart.items.length === 0) {
+    router.replace({ name: 'cart' })
+    return
+  }
   if (authStore.profile?.savedAddress) {
     const saved = authStore.profile.savedAddress
     form.name = saved.name
@@ -69,6 +78,7 @@ onMounted(() => {
 })
 
 async function handleSubmit() {
+  if (cart.items.length === 0) return
   if (!validate()) return
 
   const orderId = await createOrder(
@@ -76,9 +86,9 @@ async function handleSubmit() {
     cart.items,
     {
       subtotal: cart.subtotal,
-      shippingFee: cart.shippingFee,
+      shippingFee: shippingFee.value,
       discount: cart.discount,
-      total: cart.total,
+      total: total.value,
     },
     authStore.user?.uid ?? null
   )
@@ -110,11 +120,11 @@ async function handleSubmit() {
       </ul>
       <div class="flex justify-between border-t border-gray-200 pt-3 text-sm">
         <span>{{ t('cart.shipping') }}</span>
-        <span>NT.${{ cart.shippingFee }}</span>
+        <span>NT.${{ shippingFee }}</span>
       </div>
       <div class="mt-2 flex justify-between font-bold">
         <span>{{ t('cart.total') }}</span>
-        <span class="text-primary">NT.${{ cart.total }}</span>
+        <span class="text-primary">NT.${{ total }}</span>
       </div>
     </div>
 

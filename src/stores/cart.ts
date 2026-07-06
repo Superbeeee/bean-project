@@ -23,7 +23,8 @@ function loadCartFromStorage(): CartItem[] {
 
 export const useCartStore = defineStore('cart', () => {
   const items = ref<CartItem[]>(loadCartFromStorage())
-  const shippingFee = ref(160)
+  // 宅配基本運費；購物車為空時不計運費
+  const shippingFee = computed(() => (items.value.length > 0 ? 160 : 0))
 
   // 以明確呼叫取代 deep watch，避免每次巢狀屬性變動都觸發全量序列化
   function persistCart() {
