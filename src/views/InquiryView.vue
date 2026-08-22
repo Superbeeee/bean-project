@@ -71,7 +71,7 @@ async function handleSubmit() {
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <!-- Purpose -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.purpose') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.purpose') }}</label>
         <select
           v-model="form.purpose"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
@@ -84,7 +84,7 @@ async function handleSubmit() {
 
       <!-- Company -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.company') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.company') }}</label>
         <input
           v-model="form.company"
           type="text"
@@ -94,7 +94,7 @@ async function handleSubmit() {
 
       <!-- Contact Name -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contact') }} <span class="text-red-500">*</span></label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.contact') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.name"
           type="text"
@@ -105,7 +105,7 @@ async function handleSubmit() {
 
       <!-- Phone -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.mobile') }} <span class="text-red-500">*</span></label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.mobile') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.phone"
           type="text"
@@ -117,7 +117,7 @@ async function handleSubmit() {
 
       <!-- Company Tel -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.companyTel') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.companyTel') }}</label>
         <input
           v-model="form.companyTel"
           type="text"
@@ -127,7 +127,7 @@ async function handleSubmit() {
 
       <!-- Email -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.email') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.email') }}</label>
         <input
           v-model="form.email"
           type="email"
@@ -140,7 +140,7 @@ async function handleSubmit() {
 
       <!-- Contact Time -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.contactTime') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.contactTime') }}</label>
         <select
           v-model="form.contactTime"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
@@ -153,7 +153,7 @@ async function handleSubmit() {
 
       <!-- Product -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.product') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.product') }}</label>
         <select
           v-model="form.product"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
@@ -166,7 +166,7 @@ async function handleSubmit() {
 
       <!-- Quantity -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.quantity') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.quantity') }}</label>
         <select
           v-model="form.quantity"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"
@@ -180,7 +180,7 @@ async function handleSubmit() {
 
       <!-- Date -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.date') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.date') }}</label>
         <input
           v-model="form.date"
           type="text"
@@ -190,7 +190,7 @@ async function handleSubmit() {
 
       <!-- Source -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('inquiry.source') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('inquiry.source') }}</label>
         <select
           v-model="form.source"
           class="flex-1 rounded border border-gray-300 px-3 py-2 text-sm"

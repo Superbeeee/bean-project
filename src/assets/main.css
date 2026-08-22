@@ -19,6 +19,22 @@ body {
   line-height: 1.4;
 }
 
+/* ── 語言切換過場（View Transitions API）──
+   切換語言時整頁文字以淡入淡出交接，不會硬跳。
+   固定 header 與捲動位置由瀏覽器自動處理快照。 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 /* Hamburger menu button */
 .hamburger-wrap {
   position: absolute;
@@ -119,8 +135,11 @@ body {
 .nav-link-hover span::before {
   position: absolute;
   top: 100%;
+  left: 0;
   content: attr(data-hover);
   font-weight: 700;
+  /* hover 文字為粗體，寬度比原字略寬；不加 nowrap 會在部分語言換行 */
+  white-space: nowrap;
   transform: translate3d(0, 0, 0);
 }
 

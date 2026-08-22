@@ -55,7 +55,7 @@ async function handleLogout() {
             <li v-for="item in navRoutes" :key="item.to">
               <RouterLink
                 :to="item.to"
-                class="block h-10 font-serif text-[13px] leading-10 tracking-wider text-black no-underline"
+                class="flex min-h-10 items-center font-serif text-[13px] leading-snug tracking-wider text-black no-underline"
                 @click="emit('close')"
               >
                 {{ t(item.labelKey) }}
@@ -86,7 +86,7 @@ async function handleLogout() {
 
           <!-- Language Switcher -->
           <div class="mt-6">
-            <LanguageSwitcher />
+            <LanguageSwitcher align="left" />
           </div>
 
           <!-- Social Links -->

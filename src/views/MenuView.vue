@@ -118,7 +118,7 @@ function scrollToTop() {
 
     <!-- Back to Top -->
     <button
-      class="fixed bottom-8 right-8 z-30 flex flex-col items-center gap-1 rounded-full bg-white/80 p-3 shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+      class="fixed bottom-8 right-8 z-30 flex min-w-[68px] flex-col items-center gap-1 rounded-full bg-white/80 p-3 shadow-md backdrop-blur-sm transition-colors hover:bg-white"
       @click="scrollToTop"
     >
       <img :src="$asset('/photo/uparrow.png')" alt="↑" class="w-5" />

@@ -71,10 +71,12 @@ onMounted(async () => {
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
             </div>
-            <h3 class="mb-1 text-sm font-medium text-gray-900 lg:text-base">
+            <!-- 固定兩行高度：商品名在各語言長度不同，
+                 否則同一列的卡片價格會因為名稱換行數不同而錯位 -->
+            <h3 class="mb-1 line-clamp-2 min-h-[2.5rem] text-sm font-medium leading-tight text-gray-900 lg:min-h-[2.75rem] lg:text-base">
               {{ productName(product.id, product.name) }}
             </h3>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-x-2">
               <span class="text-xs text-gray-400 line-through">
                 {{ t('common.originalPrice') }} ${{ product.originalPrice }}
               </span>
