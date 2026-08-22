@@ -15,11 +15,12 @@ const cart = useCartStore()
     <!-- Cart Table -->
     <div class="mb-8">
       <!-- Header -->
-      <div class="hidden border-b border-gray-200 pb-3 lg:flex">
+      <!-- 表頭欄寬固定，加 whitespace-nowrap 避免長翻譯換行讓整列高度跳動 -->
+      <div class="hidden border-b border-gray-200 pb-3 lg:flex lg:gap-4">
         <div class="flex-1 text-sm font-medium text-gray-500">{{ t('cart.headerProduct') }}</div>
-        <div class="w-32 text-center text-sm font-medium text-gray-500">{{ t('cart.headerQuantity') }}</div>
-        <div class="w-24 text-right text-sm font-medium text-gray-500">{{ t('cart.headerTotal') }}</div>
-        <div class="w-16 text-center text-sm font-medium text-gray-500">{{ t('cart.headerDelete') }}</div>
+        <div class="w-32 shrink-0 whitespace-nowrap text-center text-sm font-medium text-gray-500">{{ t('cart.headerQuantity') }}</div>
+        <div class="w-24 shrink-0 whitespace-nowrap text-right text-sm font-medium text-gray-500">{{ t('cart.headerTotal') }}</div>
+        <div class="w-16 shrink-0 whitespace-nowrap text-center text-sm font-medium text-gray-500">{{ t('cart.headerDelete') }}</div>
       </div>
 
       <!-- Empty Cart -->
@@ -45,7 +46,7 @@ const cart = useCartStore()
           </div>
 
           <!-- Quantity -->
-          <div class="flex w-32 items-center justify-center gap-2">
+          <div class="flex w-32 shrink-0 items-center justify-center gap-2">
             <button
               class="flex h-8 w-8 items-center justify-center rounded border border-gray-300 transition-colors hover:bg-gray-100"
               @click="cart.updateQuantity(item.id, item.quantity - 1)"
@@ -62,12 +63,12 @@ const cart = useCartStore()
           </div>
 
           <!-- Total -->
-          <div class="w-24 text-right text-sm font-bold">
+          <div class="w-24 shrink-0 text-right text-sm font-bold">
             NT.${{ item.price * item.quantity }}
           </div>
 
           <!-- Delete -->
-          <div class="w-16 text-center">
+          <div class="w-16 shrink-0 text-center">
             <button
               class="text-gray-400 transition-colors hover:text-red-500"
               @click="cart.removeItem(item.id)"

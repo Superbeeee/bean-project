@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const pageRef = ref<HTMLElement | null>(null)
 let ctx: gsap.Context | null = null
 
@@ -323,6 +323,18 @@ onMounted(async () => {
   initAnimations()
   ScrollTrigger.refresh()
 
+  // 切換語言時，文案長度改變 → 各區塊高度改變，
+  // 而且 splitIntoChars() 產生的 <span> 會被 Vue 重新渲染的文字節點覆蓋，
+  // 導致逐字動畫的目標消失、pin 住的段落位置全部錯位。
+  // 因此語言一變就整組動畫重建，並重新計算 ScrollTrigger 的座標。
+  watch(locale, async () => {
+    ctx?.revert()
+    ctx = null
+    await nextTick()
+    initAnimations()
+    ScrollTrigger.refresh()
+  })
+
   // ── 自訂游標：僅在有精細指標裝置（滑鼠）時啟用 ──
   if (window.matchMedia('(pointer: fine)').matches) {
     const cursorEl = document.querySelector<HTMLElement>('.cursor-orb')
@@ -571,7 +583,7 @@ function scrollToTop() {
 
     <!-- Back to Top -->
     <button
-      class="fixed bottom-8 right-8 z-30 flex flex-col items-center gap-1 rounded-full bg-white/20 p-3 backdrop-blur-sm transition-colors hover:bg-white/40"
+      class="fixed bottom-8 right-8 z-30 flex min-w-[68px] flex-col items-center gap-1 rounded-full bg-white/20 p-3 backdrop-blur-sm transition-colors hover:bg-white/40"
       @click="scrollToTop"
     >
       <img :src="$asset('/photo/uparrow.png')" alt="上" class="w-5" />

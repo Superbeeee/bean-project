@@ -26,4 +26,19 @@ declare module 'vue' {
   }
 }
 
+// View Transitions API：TS 內建的 DOM lib 尚未涵蓋，這裡補上最小宣告。
+// 本檔案是 module（結尾有 export {}），所以必須用 declare global 才能擴充全域型別。
+declare global {
+  interface ViewTransition {
+    readonly finished: Promise<void>
+    readonly ready: Promise<void>
+    readonly updateCallbackDone: Promise<void>
+    skipTransition(): void
+  }
+
+  interface Document {
+    startViewTransition?: (callback: () => void | Promise<void>) => ViewTransition
+  }
+}
+
 export {}

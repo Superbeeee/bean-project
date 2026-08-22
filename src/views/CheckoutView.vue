@@ -134,7 +134,7 @@ async function handleSubmit() {
 
       <!-- Name -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.name') }} <span class="text-red-500">*</span></label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.name') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.name"
           type="text"
@@ -146,7 +146,7 @@ async function handleSubmit() {
 
       <!-- Phone -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.phone') }} <span class="text-red-500">*</span></label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.phone') }} <span class="text-red-500">*</span></label>
         <input
           v-model="form.phone"
           type="tel"
@@ -158,7 +158,7 @@ async function handleSubmit() {
 
       <!-- Email -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.email') }}</label>
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.email') }}</label>
         <input
           v-model="form.email"
           type="email"
@@ -172,13 +172,13 @@ async function handleSubmit() {
 
       <!-- Delivery -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.deliveryMethod') }}</label>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 text-sm">
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.deliveryMethod') }}</label>
+        <div class="flex flex-wrap gap-x-4 gap-y-2">
+          <label class="flex items-center gap-2 whitespace-nowrap text-sm">
             <input v-model="form.delivery" type="radio" value="宅配" class="accent-black" />
             {{ t('checkout.domesticDelivery') }}
           </label>
-          <label class="flex items-center gap-2 text-sm">
+          <label class="flex items-center gap-2 whitespace-nowrap text-sm">
             <input v-model="form.delivery" type="radio" value="門市取貨" class="accent-black" />
             {{ t('checkout.storePickup') }}
           </label>
@@ -188,9 +188,10 @@ async function handleSubmit() {
       <!-- Address (only for delivery) -->
       <template v-if="form.delivery === '宅配'">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-          <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.address') }} <span class="text-red-500">*</span></label>
+          <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.address') }} <span class="text-red-500">*</span></label>
           <div class="flex flex-1 gap-2">
-            <select v-model="form.city" class="w-28 rounded border border-gray-300 px-2 py-2 text-sm">
+            <!-- 縣市名在英文下明顯較長（New Taipei City），原本 w-28 會被截斷 -->
+            <select v-model="form.city" class="w-40 shrink-0 rounded border border-gray-300 px-2 py-2 text-sm">
               <option value="台東縣">{{ t('checkout.cityTaitung') }}</option>
               <option value="台北市">{{ t('checkout.cityTaipei') }}</option>
               <option value="新北市">{{ t('checkout.cityNewTaipei') }}</option>
@@ -204,12 +205,12 @@ async function handleSubmit() {
               v-model="form.district"
               type="text"
               :placeholder="t('checkout.districtPlaceholder')"
-              class="w-24 rounded border border-gray-300 px-2 py-2 text-sm"
+              class="min-w-0 flex-1 rounded border border-gray-300 px-2 py-2 text-sm"
             />
           </div>
         </div>
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-          <label class="w-32 shrink-0 text-sm font-medium"></label>
+          <label class="shrink-0 text-sm font-medium leading-snug lg:w-44"></label>
           <input
             v-model="form.address"
             type="text"
@@ -225,13 +226,13 @@ async function handleSubmit() {
 
       <!-- Payment -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-center">
-        <label class="w-32 shrink-0 text-sm font-medium">{{ t('checkout.paymentMethod') }}</label>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 text-sm">
+        <label class="shrink-0 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.paymentMethod') }}</label>
+        <div class="flex flex-wrap gap-x-4 gap-y-2">
+          <label class="flex items-center gap-2 whitespace-nowrap text-sm">
             <input v-model="form.payment" type="radio" value="貨到付款" class="accent-black" />
             {{ t('checkout.cod') }}
           </label>
-          <label class="flex items-center gap-2 text-sm">
+          <label class="flex items-center gap-2 whitespace-nowrap text-sm">
             <input v-model="form.payment" type="radio" value="轉帳匯款" class="accent-black" />
             {{ t('checkout.bankTransfer') }}
           </label>
@@ -240,7 +241,7 @@ async function handleSubmit() {
 
       <!-- Note -->
       <div class="flex flex-col gap-2 lg:flex-row lg:items-start">
-        <label class="w-32 shrink-0 pt-2 text-sm font-medium">{{ t('checkout.notes') }}</label>
+        <label class="shrink-0 pt-2 text-sm font-medium leading-snug lg:w-44">{{ t('checkout.notes') }}</label>
         <textarea
           v-model="form.note"
           rows="3"

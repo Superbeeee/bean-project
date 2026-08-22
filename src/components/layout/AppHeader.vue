@@ -36,32 +36,34 @@ function toggleMenu() {
       </RouterLink>
 
       <!-- Desktop Nav -->
-      <nav class="hidden lg:block">
-        <div class="flex gap-4 py-[41px] font-serif text-[15px] leading-relaxed">
+      <!-- 固定寬度：各語言導覽字串長度差異大，若讓 nav 自動撐開，
+           整排（logo / nav / 社群 icon）會在切換語言時左右位移 -->
+      <nav class="hidden lg:block lg:w-[600px]">
+        <div class="flex justify-center gap-4 py-[41px] font-serif text-[15px] leading-relaxed">
           <RouterLink
             to="/shop"
-            class="nav-link-hover overflow-hidden h-5 mx-[15px]"
+            class="nav-link-hover overflow-hidden h-5 mx-[9px] px-[6px] shrink-0 whitespace-nowrap"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
             <span :data-hover="t('nav.shopOnline')">{{ t('nav.shopOnlineHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/art"
-            class="nav-link-hover overflow-hidden h-5 mx-[15px]"
+            class="nav-link-hover overflow-hidden h-5 mx-[9px] px-[6px] shrink-0 whitespace-nowrap"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
             <span :data-hover="t('nav.artPresent')">{{ t('nav.artPresentHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/menu"
-            class="nav-link-hover overflow-hidden h-5 mx-[15px]"
+            class="nav-link-hover overflow-hidden h-5 mx-[9px] px-[6px] shrink-0 whitespace-nowrap"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
             <span :data-hover="t('nav.beanMenu')">{{ t('nav.beanMenuHover') }}</span>
           </RouterLink>
           <RouterLink
             to="/map"
-            class="nav-link-hover overflow-hidden h-5 mx-[15px]"
+            class="nav-link-hover overflow-hidden h-5 mx-[9px] px-[6px] shrink-0 whitespace-nowrap"
             :class="theme === 'white' ? 'text-white' : 'text-black'"
           >
             <span :data-hover="t('nav.whereBean')">{{ t('nav.whereBeanHover') }}</span>
@@ -72,7 +74,7 @@ function toggleMenu() {
       <!-- Desktop Social Links -->
       <ul class="hidden lg:inline-flex lg:gap-2.5 lg:pt-[50px]">
         <li>
-          <LanguageSwitcher />
+          <LanguageSwitcher :theme="theme" />
         </li>
         <li>
           <a href="#" target="_blank" class="group relative inline-block h-[30px] w-[30px]">
